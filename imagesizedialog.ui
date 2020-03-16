@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ImageSizeDialog</class>
+ <widget class="QDialog" name="ImageSizeDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>283</width>
+    <height>111</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>设置图片大小</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog
+{
+background:rgb(245, 245, 245);
+}</string>
+  </property>
+  <widget class="QPushButton" name="OK_Button">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>50</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+border-style:none;
+padding:10px;
+border-radius:6px;
+color:#E6F8F5;
+background:rgb(22,155,213);
+}
+
+QPushButton:hover
+{
+color:#FFFFFF;
+background:rgb(70, 197, 255);
+}
+
+QPushButton:pressed
+{
+color:#A7EEE6;
+background:rgb(19, 139, 190);
+}</string>
+   </property>
+   <property name="text">
+    <string>确定</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="PictureSizeBox">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>10</y>
+     <width>111</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+    </font>
+   </property>
+   <property name="title">
+    <string>图片大小</string>
+   </property>
+   <widget class="QSpinBox" name="HeightSpinBox">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>50</y>
+      <width>51</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
+    </property>
+    <property name="minimum">
+     <number>5</number>
+    </property>
+    <property name="maximum">
+     <number>2080</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="WidthLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>宽度</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="WidthSpinBox">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>20</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="minimum">
+     <number>5</number>
+    </property>
+    <property name="maximum">
+     <number>2080</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="HeightLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>高度</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>20</y>
+     <width>51</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>保持大小</string>
+   </property>
+  </widget>
+  <widget class="SwitchButton" name="KeepSizeCheck">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>20</y>
+     <width>51</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="space">
+    <number>15</number>
+   </property>
+   <property name="rectRadius">
+    <number>3</number>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="animation">
+    <bool>true</bool>
+   </property>
+   <property name="buttonStyle">
+    <enum>SwitchButton::ButtonStyle_CircleOut</enum>
+   </property>
+   <property name="bgColorOn">
+    <color>
+     <red>22</red>
+     <green>155</green>
+     <blue>213</blue>
+    </color>
+   </property>
+   <property name="sliderColorOn">
+    <color>
+     <red>22</red>
+     <green>155</green>
+     <blue>213</blue>
+    </color>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SwitchButton</class>
+   <extends>QWidget</extends>
+   <header>switchbutton.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SearchFrame</class>
+ <widget class="QFrame" name="SearchFrame">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>370</width>
+    <height>90</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Frame</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QFrame
+{
+border-style:none;
+border-radius:10px;
+padding:3px;
+border:3px solid white;
+background:lightgray;
+}
+
+QPushButton
+{
+border-style:none;
+padding:2px;
+border-radius:5px;
+border:1px solid rgb(119,119,119);
+color:black;
+background:white;
+}
+
+QPushButton:hover
+{
+background:rgb(250, 250, 250);
+}
+
+QPushButton:pressed
+{
+background:rgb(220, 220, 220);
+}</string>
+  </property>
+  <widget class="QPushButton" name="OpenBtn">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>20</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+border-style:none;
+padding:2px;
+border-radius:5px;
+border:1px solid rgb(119,119,119);
+color:black;
+background:white;
+}
+
+QPushButton:hover
+{
+background:rgb(250, 250, 250);
+}
+
+QPushButton:pressed
+{
+background:rgb(220, 220, 220);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/images/images/down.ico</normaloff>:/images/images/down.ico</iconset>
+   </property>
+  </widget>
+  <widget class="QWidget" name="DisplaceWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>50</y>
+     <width>271</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+border-style:none;
+padding:2px;
+border-radius:5px;
+border:1px solid rgb(119,119,119);
+color:black;
+background:white;
+}
+
+QPushButton:hover
+{
+background:rgb(250, 250, 250);
+}
+
+QPushButton:pressed
+{
+background:rgb(220, 220, 220);
+}</string>
+   </property>
+   <widget class="QLineEdit" name="DisplaceLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit
+{
+border-style:none;
+padding:2px;
+border-radius:5px;
+border:2px solid #DCE4EC;
+}
+
+QLineEdit:focus
+{
+border:2px solid rgb(22,155,213);
+}</string>
+    </property>
+    <property name="placeholderText">
+     <string>替换为</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="DisplaceBtn">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>0</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string>替换</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="res.qrc">
+      <normaloff>:/images/images/Displace.ico</normaloff>:/images/images/Displace.ico</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="DisplaceAllBtn">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>0</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="whatsThis">
+     <string>全部替换</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="res.qrc">
+      <normaloff>:/images/images/DisplaceAll.ico</normaloff>:/images/images/DisplaceAll.ico</iconset>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="SearchWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>10</y>
+     <width>321</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QLineEdit" name="SearchLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="whatsThis">
+     <string/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit
+{
+border-style:none;
+padding:2px;
+border-radius:5px;
+border:2px solid #DCE4EC;
+}
+
+QLineEdit:focus
+{
+border:2px solid rgb(22,155,213);
+}</string>
+    </property>
+    <property name="placeholderText">
+     <string>查找...</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="CaseSensitive">
+    <property name="geometry">
+     <rect>
+      <x>165</x>
+      <y>5</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+border-style:none;
+padding:2px;
+border-radius:5px;
+border:1px solid rgb(119,119,119);
+background:white;
+}
+
+QPushButton:hover
+{
+background:rgb(250, 250, 250);
+}
+
+QPushButton:pressed
+{
+background:rgb(220, 220, 220);
+}
+
+QPushButton:checked
+{
+background:rgb(22,155,213);
+border:1px solid rgb(22,155,213);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="res.qrc">
+      <normaloff>:/images/images/CaseSensitive.ico</normaloff>:/images/images/CaseSensitive.ico</iconset>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="FindLastBtn">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>0</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="res.qrc">
+      <normaloff>:/images/images/left.ico</normaloff>:/images/images/left.ico</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="FindNextBtn">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>0</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="res.qrc">
+      <normaloff>:/images/images/right.ico</normaloff>:/images/images/right.ico</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="CloseBtn">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>0</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="res.qrc">
+      <normaloff>:/images/images/close.ico</normaloff>:/images/images/close.ico</iconset>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
+ <connections/>
+</ui>
