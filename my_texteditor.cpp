@@ -7,6 +7,7 @@
 
 #include <QMimeData>
 #include <QImageReader>
+#include <QGraphicsOpacityEffect>
 #include <QFileInfo>
 #include <QUrl>
 
@@ -16,7 +17,11 @@ My_TextEditor::My_TextEditor(QWidget *parent) :
     // 调整字体背景色
     QPalette palette=this->palette();
     palette.setColor(QPalette::Highlight,QColor(22,155,213));
+    palette.setBrush(QPalette::Base,QBrush(QColor(242,242,242,0)));
+
     this->setPalette(palette);
+
+    //this->setAutoFillBackground(true);
 }
 
 bool My_TextEditor::canInsertFromMimeData(const QMimeData *source) const
@@ -42,7 +47,7 @@ void My_TextEditor::insertFromMimeData(const QMimeData *source)
                         info.suffix().toLower().toLatin1()))
                 this->dropImage(url, QImage(info.filePath()));
             else
-                emit callOpenFile(url.toLocalFile());
+                emit openFile(url.toLocalFile());
         }
     }
     else

@@ -9,14 +9,19 @@
 #include "imagesizedialog.h"
 #include "insertdatedialog.h"
 #include "searchframe.h"
+#include "tomatobellframe.h"
+#include "tomatobelldialog.h"
 
 #include "my_texteditor.h"
+#include "my_statusbar.h"
+#include "my_file.h"
 
 class QLabel;
 class QSpinBox;
 class QFontComboBox;
 class QActionGroup;
 class QSettings;
+class QFile;
 
 namespace Ui {
 class MainWindow;
@@ -28,16 +33,16 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    ~MainWindow() Q_DECL_OVERRIDE ;
 
 private slots:
     void on_actFontBold_triggered(bool checked);
 
-    void on_txtEdit_copyAvailable(bool b);
-
     void on_actFontItalic_triggered(bool checked);
 
     void on_actFontUnder_triggered(bool checked);
+
+    void on_actFontStrikeout_triggered(bool checked);
 
     void on_actToolbarStyle_triggered(bool checked);
 
@@ -75,51 +80,65 @@ private slots:
 
     void on_actConcise_triggered(bool checked);
 
-    // 自定义槽函数
-    void spinFontSize_valueChanged(int);// 改变字体大小
-    void comboFont_currentIndexChanged(const QString &); // 选中文字改变(更新cut,copy,paste状态)
-    void textChanged();                 // 文字改变
-    void CursorIsChanged();             // 光标位置改变
-    void TextSearch(QString,bool,bool); // 搜索文本
-    void TextDisplace(QString,bool,QString, bool);
-    void currentCharFormatChanged(const QTextCharFormat &);
-    void RecentlyOpened(QAction*);      // 打开最近访问文件
-    void OpenFile(QString FileName);    // 打开文件
+    void on_actTomatobell_triggered();
+
+    /* 文本框信号槽 */
+    void on_txtEdit_openFile(QString);          // 打开拖拽文件
+    void on_txtEdit_textChanged();              // 文字改变
+    void on_txtEdit_cursorPositionChanged();    // 光标位置改变
+    void on_txtEdit_currentCharFormatChanged(const QTextCharFormat &);  // 光标字体改变
+    void on_txtEdit_copyAvailable(bool b);      // 可复制状态改变
+
+    void spinFontSize_valueChanged(int);                    // 改变字体大小
+    void comboFont_currentIndexChanged(const QString &);    // 选中文字改变(更新cut,copy,paste状态)
+
+    void TextSearch(QString,bool,bool);                     // 搜索文本
+    void TextDisplace(QString,QString, bool);               // 替换文本
+
+    void on_recentlyOpenedMenu_triggered(QAction *);        // 打开最近访问文件
+    void on_backgroundMenu_triggered(QAction *);            // 更换背景
 
 private:
     Ui::MainWindow *ui;
 
-    InsertDateDialog *m_InsertDateDialog=nullptr;
-    ImageSizeDialog *m_ImageSizeDialog=nullptr;
-    SearchFrame *m_SearchFrame=nullptr;
-    AboutDialog *m_AboutDialog=nullptr;
-    HelpDialog *m_HelpDialog=nullptr;
-    GitDialog *m_GitDialog=nullptr;
+    /* 自定义窗口 */
+    InsertDateDialog *m_InsertDateDialog = nullptr;
+    TomatobellDialog *m_TomatobellDialog = nullptr;
+    ImageSizeDialog  *m_ImageSizeDialog  = nullptr;
+    AboutDialog      *m_AboutDialog      = nullptr;
+    HelpDialog       *m_HelpDialog       = nullptr;
+    GitDialog        *m_GitDialog        = nullptr;
+    TomatobellFrame  *m_TomatobellFrame  = nullptr;
+    SearchFrame      *m_SearchFrame      = nullptr;
+    my_StatusBar     *m_StatusBar        = nullptr;
 
-    QString m_FileName;         // 当前文件名
-    QSettings *settings;        // 设置
+    QSpinBox      *spinFontSize    = nullptr;   // 文本大小
+    QFontComboBox *comboFont       = nullptr;   // 文本字体
+    QActionGroup  *alignmentGroup  = nullptr;   // 字体对齐动作组
+    QActionGroup  *backgroundGroup = nullptr;   // 更换背景动作组
 
-    QLabel *fLabCurFile;        // 文件名QLabel
-    QLabel *isSaveLable;        // "文件以保存"Qlabel
-    QLabel *nCurposLable;       // 光标位置QLabel
-    QSpinBox *spinFontSize;     // 文本大小
-    QFontComboBox *comboFont;   // 文本字体
-    QActionGroup *alignmentGroup;// 字体对齐动作组
+    /* 功能性对象 */
+    my_File   *m_File   = nullptr;      // 当前文件
+    QSettings *settings = nullptr;      // 设置
 
+    /* 更新窗口位置 */
     inline void SearchFrameUpdate();
+    inline void TomatobellFrameUpdate();
 
+    /* 初始化 */
     void initUI();
     void initFile();
     void initSignalSlots();
-    bool SaveFile(QString &m_FileName); // 写入文件
 
-    void CheckFileIsSave();             // 检查文件是否保存
-    void LoadSettings();                // 加载设置
-    void SaveSettings();                // 保存设置
+    bool checkFileSave();   // 检查文件是否保存
 
-    void closeEvent(QCloseEvent *event); // 重写关闭事件
-    //void moveEvent(QMoveEvent *event);
-    void resizeEvent(QResizeEvent* event);
+    /* 设置操作函数 */
+    void loadSettings();    // 加载设置
+    void saveSettings();    // 保存设置
+
+    /* 事件重写 */
+    void closeEvent(QCloseEvent *event)   Q_DECL_OVERRIDE ;
+    void resizeEvent(QResizeEvent* event) Q_DECL_OVERRIDE ;
 };
 
 #endif // MAINWINDOW_H

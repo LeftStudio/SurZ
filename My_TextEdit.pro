@@ -4,14 +4,14 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = My_TextEdit
 TEMPLATE = app
 
-VERSION = 1.2.0.0    # 1.2.0.0
+VERSION = 1.4.0.0    # 1.4.0.0
 
 RC_ICONS = images/SurZ.ico
 
@@ -36,8 +36,13 @@ SOURCES += \
         insertdatedialog.cpp \
         main.cpp \
         mainwindow.cpp \
+        my_file.cpp \
+        my_statusbar.cpp \
+        my_switchbutton.cpp \
         my_texteditor.cpp \
-        searchframe.cpp
+        searchframe.cpp \
+        tomatobelldialog.cpp \
+        tomatobellframe.cpp
 
 HEADERS += \
         aboutdialog.h \
@@ -46,10 +51,13 @@ HEADERS += \
         imagesizedialog.h \
         insertdatedialog.h \
         mainwindow.h \
+        my_file.h \
+        my_statusbar.h \
+        my_switchbutton.h \
         my_texteditor.h \
         searchframe.h \
-        switchbutton.h \
-        wavewater.h
+        tomatobelldialog.h \
+        tomatobellframe.h
 
 FORMS += \
         aboutdialog.ui \
@@ -58,7 +66,10 @@ FORMS += \
         imagesizedialog.ui \
         insertdatedialog.ui \
         mainwindow.ui \
-        searchframe.ui
+        my_statusbar.ui \
+        searchframe.ui \
+        tomatobelldialog.ui \
+        tomatobellframe.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -67,12 +78,3 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     res.qrc
-
-DISTFILES +=
-
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/Quc/ -lquc
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/Quc/ -lqucd
-else:unix: LIBS += -L$$PWD/Quc/ -lquc
-
-INCLUDEPATH += $$PWD/Quc
-DEPENDPATH += $$PWD/Quc

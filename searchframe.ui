@@ -144,6 +144,9 @@ background:rgb(220, 220, 220);
       <pointsize>10</pointsize>
      </font>
     </property>
+    <property name="toolTip">
+     <string>全部替换</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit
 {
@@ -170,6 +173,9 @@ border:2px solid rgb(22,155,213);
       <width>30</width>
       <height>30</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>替换</string>
     </property>
     <property name="whatsThis">
      <string>替换</string>
@@ -266,6 +272,12 @@ border:2px solid rgb(22,155,213);
       <height>20</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>区分大小写</string>
+    </property>
+    <property name="whatsThis">
+     <string>区分大小写</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton
 {
@@ -321,6 +333,9 @@ border:1px solid rgb(22,155,213);
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
+    <property name="toolTip">
+     <string>上一个</string>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -344,6 +359,9 @@ border:1px solid rgb(22,155,213);
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
+    <property name="toolTip">
+     <string>下一个</string>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -366,6 +384,9 @@ border:1px solid rgb(22,155,213);
       <horstretch>0</horstretch>
       <verstretch>0</verstretch>
      </sizepolicy>
+    </property>
+    <property name="toolTip">
+     <string>关闭</string>
     </property>
     <property name="styleSheet">
      <string notr="true"/>

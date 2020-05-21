@@ -26,6 +26,8 @@ void ImageSizeDialog::initImageSize(int *w, int *h)
 
     ui->WidthSpinBox->setValue(*ImageWidth);
     ui->HeightSpinBox->setValue(*ImageHeight);
+
+    ui->KeepSizeCheck->setChecked(true);
 }
 
 void ImageSizeDialog::initUI()

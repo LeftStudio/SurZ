@@ -23,8 +23,8 @@ background:rgb(245, 245, 245);
    <property name="geometry">
     <rect>
      <x>170</x>
-     <y>50</y>
-     <width>81</width>
+     <y>60</y>
+     <width>80</width>
      <height>31</height>
     </rect>
    </property>
@@ -171,7 +171,7 @@ background:rgb(19, 139, 190);
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>20</y>
+     <y>25</y>
      <width>51</width>
      <height>16</height>
     </rect>
@@ -186,51 +186,23 @@ background:rgb(19, 139, 190);
     <string>保持大小</string>
    </property>
   </widget>
-  <widget class="SwitchButton" name="KeepSizeCheck">
+  <widget class="my_SwitchButton" name="KeepSizeCheck" native="true">
    <property name="geometry">
     <rect>
      <x>220</x>
      <y>20</y>
-     <width>51</width>
-     <height>21</height>
+     <width>50</width>
+     <height>26</height>
     </rect>
-   </property>
-   <property name="space">
-    <number>15</number>
-   </property>
-   <property name="rectRadius">
-    <number>3</number>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="animation">
-    <bool>true</bool>
-   </property>
-   <property name="buttonStyle">
-    <enum>SwitchButton::ButtonStyle_CircleOut</enum>
-   </property>
-   <property name="bgColorOn">
-    <color>
-     <red>22</red>
-     <green>155</green>
-     <blue>213</blue>
-    </color>
-   </property>
-   <property name="sliderColorOn">
-    <color>
-     <red>22</red>
-     <green>155</green>
-     <blue>213</blue>
-    </color>
    </property>
   </widget>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SwitchButton</class>
+   <class>my_SwitchButton</class>
    <extends>QWidget</extends>
-   <header>switchbutton.h</header>
+   <header location="global">my_switchbutton.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

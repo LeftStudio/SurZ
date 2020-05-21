@@ -30,9 +30,9 @@ SearchFrame::~SearchFrame()
 void SearchFrame::startAnimation()
 {
     animation=new QPropertyAnimation(this,"geometry");
-    animation->setDuration(100);
-    animation->setStartValue(QRect(this->pos().x(),20,370,this->height()));
-    animation->setEndValue(QRect(this->pos().x(),70,370,this->height()));
+    animation->setDuration(200);
+    animation->setStartValue(QRect(this->pos().x()+393,70,0,0));
+    animation->setEndValue(QRect(this->pos().x(),70,370,30));
     animation->start();
 }
 
@@ -72,7 +72,6 @@ void SearchFrame::initSignalSlots()
         if((!ui->SearchLineEdit->text().isEmpty())
                 &&(!ui->DisplaceLineEdit->text().isEmpty()))
             emit callTextDisplace(ui->SearchLineEdit->text(),
-                                  ui->CaseSensitive->isChecked(),
                                   ui->DisplaceLineEdit->text(),
                                   false);
     });
@@ -81,7 +80,6 @@ void SearchFrame::initSignalSlots()
         if((!ui->SearchLineEdit->text().isEmpty())
                 &&(!ui->DisplaceLineEdit->text().isEmpty()))
             emit callTextDisplace(ui->SearchLineEdit->text(),
-                                  ui->CaseSensitive->isChecked(),
                                   ui->DisplaceLineEdit->text(),
                                   true);
     });
@@ -117,9 +115,8 @@ void SearchFrame::on_OpenBtn_clicked()
 
 void SearchFrame::on_CloseBtn_clicked()
 {
-    animation->setDuration(100);
     animation->setStartValue(QRect(this->pos().x(),70,370,this->height()));
-    animation->setEndValue(QRect(this->pos().x(),20,370,this->height()));
+    animation->setEndValue(QRect(this->pos().x()+393,70,0,0));
     animation->start();
 
     connect(animation,SIGNAL(finished()),this,

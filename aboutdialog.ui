@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>312</width>
-    <height>389</height>
+    <width>310</width>
+    <height>390</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="font">
    <font>
@@ -44,10 +50,10 @@ background:white;
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;书知编辑器&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;By Left Studio&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;1.2 正式版&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://left-studio.gitee.io&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;Left-Studio.gitee.io&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;书知编辑器&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;By Left Studio&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;1.4 正式版&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://left-studio.gitee.io&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;Left-Studio.gitee.io&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="WaveWater" name="LogoWaveWater">
+  <widget class="QLabel" name="logoLabel">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -56,21 +62,11 @@ background:white;
      <height>230</height>
     </rect>
    </property>
-   <property name="refractive">
-    <number>3</number>
-   </property>
-   <property name="stoneWeight">
-    <number>100</number>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>WaveWater</class>
-   <extends>QWidget</extends>
-   <header>wavewater.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

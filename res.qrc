@@ -9,7 +9,6 @@
         <file>images/text_underline_32px_1223113_easyicon.net.ico</file>
         <file>images/text_bold_104px_1223110_easyicon.net.ico</file>
         <file>images/arrow_left_curved_128px_1223140_easyicon.net.ico</file>
-        <file>images/clear_style_128px_1223048_easyicon.net.ico</file>
         <file>images/clipboard_128px_1222862_easyicon.net.ico</file>
         <file>images/text_color_118px_1223111_easyicon.net.ico</file>
         <file>images/text_italic_101px_1223112_easyicon.net.ico</file>
@@ -19,7 +18,6 @@
         <file>images/text_align_left_128px_1223107_easyicon.net.ico</file>
         <file>images/text_align_right_128px_1223108_easyicon.net.ico</file>
         <file>images/Search_128px_1190971_easyicon.net.ico</file>
-        <file>images/Left Studio.png</file>
         <file>images/vc_git_128px_1097266_easyicon.net.ico</file>
         <file>images/WindowTop.ico</file>
         <file>images/image_picture_128px.ico</file>
@@ -34,8 +32,29 @@
         <file>images/right.ico</file>
         <file>images/up.ico</file>
         <file>images/CaseSensitive_2.ico</file>
+        <file>images/Continue.ico</file>
+        <file>images/Pause.ico</file>
+        <file>images/Stop.ico</file>
+        <file>images/Left_Studio.gif</file>
+        <file>images/text_strikeout.ico</file>
     </qresource>
     <qresource prefix="/tr">
         <file>tr/qtbase_zh_CN.qm</file>
+    </qresource>
+    <qresource prefix="/backgrounds">
+        <file>backgrounds/background_1.jpg</file>
+        <file>backgrounds/background_2.jpg</file>
+        <file>backgrounds/background_3.jpg</file>
+        <file>backgrounds/background_4.jpg</file>
+        <file>backgrounds/background_5.jpg</file>
+        <file>backgrounds/background_6.jpg</file>
+        <file>backgrounds/background_7.jpg</file>
+        <file>backgrounds/background_8.jpg</file>
+        <file>backgrounds/background_9.jpg</file>
+        <file>backgrounds/background_10.jpg</file>
+        <file>backgrounds/background_11.jpg</file>
+    </qresource>
+    <qresource prefix="/BGM">
+        <file>BGM/saveFileBGM.wav</file>
     </qresource>
 </RCC>

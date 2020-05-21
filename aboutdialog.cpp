@@ -6,10 +6,8 @@
 #include "aboutdialog.h"
 #include "ui_aboutdialog.h"
 
-#include <QLabel>
+#include <QMovie>
 #include <QMessageBox>
-//#include <QDebug>
-#include <QThread>
 
 #if _MSC_VER >= 1600
     #pragma execution_character_set("utf-8")
@@ -20,8 +18,8 @@ AboutDialog::AboutDialog(QWidget *parent) :
     ui(new Ui::AboutDialog)
 {
     ui->setupUi(this);
-    ui->LogoWaveWater->installEventFilter(this);
     this->initUI();
+    ui->logoLabel->installEventFilter(this);
 }
 
 AboutDialog::~AboutDialog()
@@ -64,12 +62,17 @@ void AboutDialog::initUI()
 {
     /* 限定窗口大小 */
     this->setFixedSize(this->size());
-    /* 显示Logo */
-    QPixmap *LogoImage=new QPixmap();
-    LogoImage->load(":/images/images/Left Studio.png");                     // 加载图片
-    ui->LogoWaveWater->setImage(                                            // 显示图片
-        LogoImage->scaled(ui->LogoWaveWater->size(),Qt::KeepAspectRatio));  // 自适应大小
-    delete LogoImage;
+
+    /* 播放Logo动画 */
+    m_LogoGif = new QMovie(this);
+    m_LogoGif->setFileName(":/images/images/Left_Studio.gif");
+
+    connect(m_LogoGif,&QMovie::frameChanged,
+           [this](int frameNumber) { if(frameNumber == 20) m_LogoGif->stop(); });
+
+    m_LogoGif->setScaledSize(ui->logoLabel->size());
+    ui->logoLabel->setMovie(m_LogoGif);
+    m_LogoGif->start();
 
     ui->label->setOpenExternalLinks(true);      // 设置打开链接
 

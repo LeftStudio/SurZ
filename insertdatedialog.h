@@ -15,7 +15,7 @@ public:
     explicit InsertDateDialog(QWidget *parent = nullptr);
     ~InsertDateDialog();
 
-    void getDateTimeString(QString *s){ DateTimeString=s; }
+    void initDateTimeString(QString *s){ DateTimeString=s; }
 
 private:
     Ui::InsertDateDialog *ui;

@@ -2,9 +2,8 @@
 #define ABOUTDIALOG_H
 
 #include <QDialog>
-#include <QMouseEvent>
 
-class QLabel;
+class QMovie;
 
 namespace Ui {
 class AboutDialog;
@@ -16,13 +15,15 @@ class AboutDialog : public QDialog
 
 public:
     explicit AboutDialog(QWidget *parent = nullptr);
-    ~AboutDialog();
+    ~AboutDialog() Q_DECL_OVERRIDE ;
 
 private:
     Ui::AboutDialog *ui;
 
+    QMovie *m_LogoGif = nullptr;
+
     inline void initUI();
-    bool eventFilter(QObject *obj, QEvent *event);
+    bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE ;
 };
 
 #endif // ABOUTDIALOG_H

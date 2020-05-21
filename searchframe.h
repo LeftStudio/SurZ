@@ -15,7 +15,7 @@ class SearchFrame : public QFrame
 
 public:
     explicit SearchFrame(QWidget *parent = nullptr);
-    ~SearchFrame();
+    ~SearchFrame() Q_DECL_OVERRIDE ;
 
     void startAnimation();
 
@@ -30,7 +30,6 @@ signals:
                         bool,       // 搜索方向;true:向前;false:向后
                         bool);      // 是否区分大小写
     void callTextDisplace(QString,  // 搜索文本
-                          bool,     // 是否区分大小写
                           QString,  // 替换文本
                           bool);    // 模式;true:替换全部;false:替换
 
@@ -43,7 +42,7 @@ private:
     inline void initUI();
     inline void initSignalSlots();
 
-    void closeEvent(QCloseEvent *);
+    void closeEvent(QCloseEvent *) Q_DECL_OVERRIDE ;
 };
 
 #endif // SEARCHFRAME_H
