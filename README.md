@@ -25,5 +25,5 @@
 
 整个初中集齐了啊！（笑）
 
-[官网](http://left-studio.gitee.io "Left-Studio官网。")
+[官网](https://left-studio.gitee.io "Left-Studio官网。")
 
