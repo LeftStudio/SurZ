@@ -23,7 +23,8 @@ TomatobellFrame::TomatobellFrame(QWidget *parent) :
 {
     ui->setupUi(this);
     this->initUI();
-    this->setMouseTracking(true);
+    this->setAttribute(Qt::WA_Hover);
+    this->installEventFilter(this);
 }
 
 TomatobellFrame::~TomatobellFrame()
@@ -62,10 +63,20 @@ void TomatobellFrame::relax()
 void TomatobellFrame::startAnimation()
 {
     animation=new QPropertyAnimation(this,"geometry");
-    animation->setDuration(200);
+    animation->setDuration(150);
     animation->setStartValue(QRect(this->pos().x()+85,this->pos().y(),0,50));
     animation->setEndValue(QRect(this->pos().x(),this->pos().y(),80,50));
     animation->start();
+}
+
+void TomatobellFrame::endAnimation()
+{
+    if(animation!=nullptr)
+    {
+        animation->setStartValue(QRect(this->pos().x(),this->pos().y(),150,50));
+        animation->setEndValue(QRect(this->pos().x()+85,this->pos().y(),0,50));
+        animation->start();
+    }
 }
 
 void TomatobellFrame::initTomatobell(int w, int r, int num)
@@ -122,50 +133,52 @@ void TomatobellFrame::update()
     }
 }
 
+void TomatobellFrame::showEvent(QShowEvent *event)
+{
+    this->startAnimation();
+    event->accept();
+}
+
 void TomatobellFrame::closeEvent(QCloseEvent *event)
 {
     emit finished();
     event->accept();
 }
 
-void TomatobellFrame::mouseMoveEvent(QMouseEvent *event)
+bool TomatobellFrame::eventFilter(QObject *obj, QEvent *event)
 {
-    QFrame::mouseMoveEvent(event);
-    static bool isInside=false;
-    if(event->pos().x()>=5&&this->width()-5>=event->pos().x()
-     &&event->pos().y()>=5&&this->height()-5>=event->pos().y())
+    if(obj==this)
     {
-        if(!isInside)
+        static int curX,curY;
+        if(event->type() == QEvent::HoverEnter)
         {
+            curX = this->pos().x();
+            curY = this->pos().y();
             this->setFixedWidth(150);
-
-            animation->setStartValue(QRect(this->pos().x(),this->pos().y(),0,50));
-            animation->setEndValue(QRect(this->pos().x()-70,this->pos().y(),150,50));
+            animation->setStartValue(QRect(curX,curY,80,50));
+            animation->setEndValue(QRect(curX-70,curY,150,50));
             animation->start();
-
-            isInside=true;
+            return true;
         }
-    }
-    else
-    {
-        if(isInside)
+        else if(event->type() == QEvent::HoverLeave)
         {
             this->setFixedWidth(80);
-
             animation->setStartValue(QRect(this->pos().x(),this->pos().y(),150,50));
-            animation->setEndValue(QRect(this->pos().x()+70,this->pos().y(),80,50));
+            animation->setEndValue(QRect(curX,curY,80,50));
             animation->start();
-
-            isInside=false;
+            return true;
         }
     }
+    return QFrame::eventFilter(obj,event);
 }
 
 void TomatobellFrame::on_StopBtn_clicked()
 {
     m_Timer->stop();
-    emit finished();
-    this->close();
+    this->endAnimation();
+
+    connect(animation,SIGNAL(finished()),this,
+            SLOT(close()));
 }
 
 void TomatobellFrame::on_PauseBtn_clicked()
@@ -174,13 +187,13 @@ void TomatobellFrame::on_PauseBtn_clicked()
     if(isPause)
     {
         m_Timer->start();
-        ui->PauseBtn->setIcon(QIcon(":/images/images/Continue.ico"));
+        ui->PauseBtn->setIcon(QIcon(":/images/images/icon/Continue.ico"));
         isPause=false;
     }
     else
     {
         m_Timer->stop();
-        ui->PauseBtn->setIcon(QIcon(":/images/images/Pause.ico"));
+        ui->PauseBtn->setIcon(QIcon(":/images/images/icon/Pause.ico"));
         isPause=true;
     }
 }

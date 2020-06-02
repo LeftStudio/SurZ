@@ -17,8 +17,6 @@ public:
     explicit SearchFrame(QWidget *parent = nullptr);
     ~SearchFrame() Q_DECL_OVERRIDE ;
 
-    void startAnimation();
-
 private slots:
     void on_OpenBtn_clicked();
 
@@ -42,7 +40,11 @@ private:
     inline void initUI();
     inline void initSignalSlots();
 
-    void closeEvent(QCloseEvent *) Q_DECL_OVERRIDE ;
+    inline void startAnimation();
+    inline void endAnimation();
+
+    void showEvent(QShowEvent *event)   Q_DECL_OVERRIDE;
+    void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
 };
 
 #endif // SEARCHFRAME_H

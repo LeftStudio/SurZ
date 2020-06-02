@@ -20,9 +20,9 @@ public:
 
     bool isRichTextFile() const { return !(m_FileInfo.suffix()=="txt"); }
 
-    void setFileName(const QString& fileName);
+    //void setFileName(const QString& fileName);
 
-    QFileSystemWatcher *getFileWatcher() const { return m_FileWatcher; }
+    //QFileSystemWatcher *getFileWatcher() const { return m_FileWatcher; }
 
     QFileInfo getFileInfo() const { return m_FileInfo; }
 
@@ -33,6 +33,8 @@ private:
     QFile m_File;
     QFileInfo m_FileInfo;
     QFileSystemWatcher *m_FileWatcher = nullptr;
+
+    bool isReadWrite = false;
 
 };
 

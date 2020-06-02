@@ -1,8 +1,14 @@
-﻿#include "mainwindow.h"
+﻿/********************/
+/*  By Left Studio  */
+/*     @Ho 229      */
+/********************/
+
+#include "mainwindow.h"
 
 #include <QApplication>
 #include <QTextCodec>
 #include <QTranslator>
+#include <QIcon>
 
 int main(int argc, char *argv[])
 {
@@ -18,6 +24,10 @@ int main(int argc, char *argv[])
 #ifdef Q_OS_WIN
     a.setFont(QFont("Microsoft YaHei",9));
 #endif
+
+    a.setWindowIcon(QIcon(":/images/images/icon/SurZ.ico"));
+
+    QApplication::setQuitOnLastWindowClosed(false);
 
     MainWindow w;
     w.show();

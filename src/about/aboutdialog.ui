@@ -50,7 +50,7 @@ background:white;
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;书知编辑器&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;By Left Studio&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;1.4 正式版&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://left-studio.gitee.io&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;Left-Studio.gitee.io&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;书知编辑器&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;By Left Studio&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;1.5 Beta&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://left-studio.gitee.io&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;Left-Studio.gitee.io&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="logoLabel">

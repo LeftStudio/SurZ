@@ -84,7 +84,7 @@ background:rgb(220, 220, 220);
    </property>
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/images/images/down.ico</normaloff>:/images/images/down.ico</iconset>
+     <normaloff>:/images/images/icon/down.ico</normaloff>:/images/images/icon/down.ico</iconset>
    </property>
   </widget>
   <widget class="QWidget" name="DisplaceWidget" native="true">
@@ -185,7 +185,7 @@ border:2px solid rgb(22,155,213);
     </property>
     <property name="icon">
      <iconset resource="res.qrc">
-      <normaloff>:/images/images/Displace.ico</normaloff>:/images/images/Displace.ico</iconset>
+      <normaloff>:/images/images/icon/Displace.ico</normaloff>:/images/images/icon/Displace.ico</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="DisplaceAllBtn">
@@ -205,7 +205,13 @@ border:2px solid rgb(22,155,213);
     </property>
     <property name="icon">
      <iconset resource="res.qrc">
-      <normaloff>:/images/images/DisplaceAll.ico</normaloff>:/images/images/DisplaceAll.ico</iconset>
+      <normaloff>:/images/images/icon/DisplaceAll.ico</normaloff>:/images/images/icon/DisplaceAll.ico</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>28</width>
+      <height>28</height>
+     </size>
     </property>
    </widget>
   </widget>
@@ -266,10 +272,10 @@ border:2px solid rgb(22,155,213);
    <widget class="QPushButton" name="CaseSensitive">
     <property name="geometry">
      <rect>
-      <x>165</x>
-      <y>5</y>
-      <width>20</width>
-      <height>20</height>
+      <x>164</x>
+      <y>4</y>
+      <width>23</width>
+      <height>23</height>
      </rect>
     </property>
     <property name="toolTip">
@@ -309,7 +315,7 @@ border:1px solid rgb(22,155,213);
     </property>
     <property name="icon">
      <iconset resource="res.qrc">
-      <normaloff>:/images/images/CaseSensitive.ico</normaloff>:/images/images/CaseSensitive.ico</iconset>
+      <normaloff>:/images/images/icon/CaseSensitive.ico</normaloff>:/images/images/icon/CaseSensitive.ico</iconset>
     </property>
     <property name="checkable">
      <bool>true</bool>
@@ -341,7 +347,7 @@ border:1px solid rgb(22,155,213);
     </property>
     <property name="icon">
      <iconset resource="res.qrc">
-      <normaloff>:/images/images/left.ico</normaloff>:/images/images/left.ico</iconset>
+      <normaloff>:/images/images/icon/left.ico</normaloff>:/images/images/icon/left.ico</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="FindNextBtn">
@@ -367,7 +373,7 @@ border:1px solid rgb(22,155,213);
     </property>
     <property name="icon">
      <iconset resource="res.qrc">
-      <normaloff>:/images/images/right.ico</normaloff>:/images/images/right.ico</iconset>
+      <normaloff>:/images/images/icon/right.ico</normaloff>:/images/images/icon/right.ico</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="CloseBtn">
@@ -396,7 +402,7 @@ border:1px solid rgb(22,155,213);
     </property>
     <property name="icon">
      <iconset resource="res.qrc">
-      <normaloff>:/images/images/close.ico</normaloff>:/images/images/close.ico</iconset>
+      <normaloff>:/images/images/icon/close.ico</normaloff>:/images/images/icon/close.ico</iconset>
     </property>
    </widget>
   </widget>

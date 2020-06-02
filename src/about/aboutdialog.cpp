@@ -65,7 +65,7 @@ void AboutDialog::initUI()
 
     /* 播放Logo动画 */
     m_LogoGif = new QMovie(this);
-    m_LogoGif->setFileName(":/images/images/Left_Studio.gif");
+    m_LogoGif->setFileName(":/images/images/icon/Left_Studio.gif");
 
     connect(m_LogoGif,&QMovie::frameChanged,
            [this](int frameNumber) { if(frameNumber == 20) m_LogoGif->stop(); });

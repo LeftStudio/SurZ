@@ -183,6 +183,7 @@ border:3px solid #aaaaff;
     <addaction name="actAcceptRichText"/>
     <addaction name="actSaveToRichText"/>
     <addaction name="separator"/>
+    <addaction name="actSystemTray"/>
     <addaction name="actExit"/>
    </widget>
    <widget class="QMenu" name="edit">
@@ -243,6 +244,7 @@ border:3px solid #aaaaff;
     </property>
     <addaction name="actInsterPicture"/>
     <addaction name="actInsterForm"/>
+    <addaction name="actInsertDate"/>
    </widget>
    <widget class="QMenu" name="tools">
     <property name="title">
@@ -374,8 +376,8 @@ border:3px solid #aaaaff;
   </widget>
   <action name="actCut">
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/cut_128px_1223050_easyicon.net.ico</normaloff>:/images/images/cut_128px_1223050_easyicon.net.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/cut_128px_1223050_easyicon.net.ico</normaloff>:/images/images/icon/cut_128px_1223050_easyicon.net.ico</iconset>
    </property>
    <property name="text">
     <string>剪切</string>
@@ -398,7 +400,7 @@ border:3px solid #aaaaff;
   <action name="actCopy">
    <property name="icon">
     <iconset>
-     <normalon>:/images/images/copy_128px_1223049_easyicon.net.ico</normalon>
+     <normalon>:/images/images/icon/copy_128px_1223049_easyicon.net.ico</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -418,8 +420,8 @@ border:3px solid #aaaaff;
   </action>
   <action name="actPaste">
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/clipboard_128px_1222862_easyicon.net.ico</normaloff>:/images/images/clipboard_128px_1222862_easyicon.net.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/clipboard_128px_1222862_easyicon.net.ico</normaloff>:/images/images/icon/clipboard_128px_1222862_easyicon.net.ico</iconset>
    </property>
    <property name="text">
     <string>粘贴</string>
@@ -438,8 +440,8 @@ border:3px solid #aaaaff;
   </action>
   <action name="actNew">
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/file_create_128px.ico</normaloff>:/images/images/file_create_128px.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/file_create_128px.ico</normaloff>:/images/images/icon/file_create_128px.ico</iconset>
    </property>
    <property name="text">
     <string>新建(&amp;N)</string>
@@ -464,8 +466,8 @@ border:3px solid #aaaaff;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/text_bold_104px_1223110_easyicon.net.ico</normaloff>:/images/images/text_bold_104px_1223110_easyicon.net.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/text_bold_104px_1223110_easyicon.net.ico</normaloff>:/images/images/icon/text_bold_104px_1223110_easyicon.net.ico</iconset>
    </property>
    <property name="text">
     <string>粗体</string>
@@ -493,8 +495,8 @@ border:3px solid #aaaaff;
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/text_italic_101px_1223112_easyicon.net.ico</normaloff>:/images/images/text_italic_101px_1223112_easyicon.net.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/text_italic_101px_1223112_easyicon.net.ico</normaloff>:/images/images/icon/text_italic_101px_1223112_easyicon.net.ico</iconset>
    </property>
    <property name="text">
     <string>斜体</string>
@@ -519,8 +521,8 @@ border:3px solid #aaaaff;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/text_underline_32px_1223113_easyicon.net.ico</normaloff>:/images/images/text_underline_32px_1223113_easyicon.net.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/text_underline_32px_1223113_easyicon.net.ico</normaloff>:/images/images/icon/text_underline_32px_1223113_easyicon.net.ico</iconset>
    </property>
    <property name="text">
     <string>下划线</string>
@@ -539,8 +541,8 @@ border:3px solid #aaaaff;
   </action>
   <action name="actOpen">
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/folder_opened_128px.ico</normaloff>:/images/images/folder_opened_128px.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/folder_opened_128px.ico</normaloff>:/images/images/icon/folder_opened_128px.ico</iconset>
    </property>
    <property name="text">
     <string>打开...(&amp;O)</string>
@@ -562,8 +564,8 @@ border:3px solid #aaaaff;
   </action>
   <action name="actSave">
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/floppy_128px_1222830_easyicon.net.ico</normaloff>:/images/images/floppy_128px_1222830_easyicon.net.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/floppy_128px_1222830_easyicon.net.ico</normaloff>:/images/images/icon/floppy_128px_1222830_easyicon.net.ico</iconset>
    </property>
    <property name="text">
     <string>保存(&amp;S)</string>
@@ -584,8 +586,8 @@ border:3px solid #aaaaff;
   </action>
   <action name="actExit">
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/arrow_left_curved_128px_1223140_easyicon.net.ico</normaloff>:/images/images/arrow_left_curved_128px_1223140_easyicon.net.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/arrow_left_curved_128px_1223140_easyicon.net.ico</normaloff>:/images/images/icon/arrow_left_curved_128px_1223140_easyicon.net.ico</iconset>
    </property>
    <property name="text">
     <string>退出</string>
@@ -599,8 +601,8 @@ border:3px solid #aaaaff;
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/delete_128px_1223051_easyicon.net.ico</normaloff>:/images/images/delete_128px_1223051_easyicon.net.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/delete_128px_1223051_easyicon.net.ico</normaloff>:/images/images/icon/delete_128px_1223051_easyicon.net.ico</iconset>
    </property>
    <property name="text">
     <string>清空</string>
@@ -651,8 +653,8 @@ border:3px solid #aaaaff;
   </action>
   <action name="actSetTextColor">
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/color_palette_128px_1202956_easyicon.net.ico</normaloff>:/images/images/color_palette_128px_1202956_easyicon.net.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/color_palette_128px_1202956_easyicon.net.ico</normaloff>:/images/images/icon/color_palette_128px_1202956_easyicon.net.ico</iconset>
    </property>
    <property name="text">
     <string>调色板</string>
@@ -679,8 +681,8 @@ border:3px solid #aaaaff;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/text_align_left_128px_1223107_easyicon.net.ico</normaloff>:/images/images/text_align_left_128px_1223107_easyicon.net.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/text_align_left_128px_1223107_easyicon.net.ico</normaloff>:/images/images/icon/text_align_left_128px_1223107_easyicon.net.ico</iconset>
    </property>
    <property name="text">
     <string>左对齐</string>
@@ -702,8 +704,8 @@ border:3px solid #aaaaff;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/text_align_center_128px_1223105_easyicon.net.ico</normaloff>:/images/images/text_align_center_128px_1223105_easyicon.net.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/text_align_center_128px_1223105_easyicon.net.ico</normaloff>:/images/images/icon/text_align_center_128px_1223105_easyicon.net.ico</iconset>
    </property>
    <property name="text">
     <string>居中</string>
@@ -725,8 +727,8 @@ border:3px solid #aaaaff;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/text_align_right_128px_1223108_easyicon.net.ico</normaloff>:/images/images/text_align_right_128px_1223108_easyicon.net.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/text_align_right_128px_1223108_easyicon.net.ico</normaloff>:/images/images/icon/text_align_right_128px_1223108_easyicon.net.ico</iconset>
    </property>
    <property name="text">
     <string>右对齐</string>
@@ -748,8 +750,8 @@ border:3px solid #aaaaff;
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/Search_128px_1190971_easyicon.net.ico</normaloff>:/images/images/Search_128px_1190971_easyicon.net.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/Search_128px_1190971_easyicon.net.ico</normaloff>:/images/images/icon/Search_128px_1190971_easyicon.net.ico</iconset>
    </property>
    <property name="text">
     <string>查找</string>
@@ -784,8 +786,8 @@ border:3px solid #aaaaff;
   </action>
   <action name="actUpdateToGit">
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/vc_git_128px_1097266_easyicon.net.ico</normaloff>:/images/images/vc_git_128px_1097266_easyicon.net.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/vc_git_128px_1097266_easyicon.net.ico</normaloff>:/images/images/icon/vc_git_128px_1097266_easyicon.net.ico</iconset>
    </property>
    <property name="text">
     <string>Git</string>
@@ -871,8 +873,8 @@ border:3px solid #aaaaff;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/WindowTop.ico</normaloff>:/images/images/WindowTop.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/WindowTop.ico</normaloff>:/images/images/icon/WindowTop.ico</iconset>
    </property>
    <property name="text">
     <string>窗口置顶</string>
@@ -893,8 +895,8 @@ border:3px solid #aaaaff;
   </action>
   <action name="actInsterPicture">
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/image_picture_128px.ico</normaloff>:/images/images/image_picture_128px.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/image_picture_128px.ico</normaloff>:/images/images/icon/image_picture_128px.ico</iconset>
    </property>
    <property name="text">
     <string>插入图片</string>
@@ -910,8 +912,8 @@ border:3px solid #aaaaff;
   </action>
   <action name="actInsterForm">
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/spreadsheet_128px.ico</normaloff>:/images/images/spreadsheet_128px.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/spreadsheet_128px.ico</normaloff>:/images/images/icon/spreadsheet_128px.ico</iconset>
    </property>
    <property name="text">
     <string>插入表格</string>
@@ -935,8 +937,8 @@ border:3px solid #aaaaff;
   </action>
   <action name="actInsertDate">
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/calendar_128px.ico</normaloff>:/images/images/calendar_128px.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/calendar_128px.ico</normaloff>:/images/images/icon/calendar_128px.ico</iconset>
    </property>
    <property name="text">
     <string>插入日期</string>
@@ -1106,8 +1108,8 @@ border:3px solid #aaaaff;
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
-     <normaloff>:/images/images/text_strikeout.ico</normaloff>:/images/images/text_strikeout.ico</iconset>
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/text_strikeout.ico</normaloff>:/images/images/icon/text_strikeout.ico</iconset>
    </property>
    <property name="text">
     <string>删除线</string>
@@ -1116,6 +1118,19 @@ border:3px solid #aaaaff;
     <font>
      <family>微软雅黑</family>
     </font>
+   </property>
+  </action>
+  <action name="actShow">
+   <property name="text">
+    <string>显示</string>
+   </property>
+  </action>
+  <action name="actSystemTray">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>退出至系统托盘</string>
    </property>
   </action>
  </widget>
@@ -1128,25 +1143,9 @@ border:3px solid #aaaaff;
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="res.qrc"/>
+  <include location="../resource/res.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>actExit</sender>
-   <signal>triggered()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>333</x>
-     <y>262</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>actCut</sender>
    <signal>triggered()</signal>

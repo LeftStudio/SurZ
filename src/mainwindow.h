@@ -19,6 +19,7 @@
 class QLabel;
 class QSpinBox;
 class QFontComboBox;
+class QSystemTrayIcon;
 class QActionGroup;
 class QSettings;
 class QFile;
@@ -118,17 +119,22 @@ private:
     QActionGroup  *backgroundGroup = nullptr;   // 更换背景动作组
 
     /* 功能性对象 */
-    my_File   *m_File   = nullptr;      // 当前文件
-    QSettings *settings = nullptr;      // 设置
+    my_File         *m_File            = nullptr;      // 当前文件
+    QSettings       *m_Settings        = nullptr;      // 设置
+    QSystemTrayIcon *m_SystemTrayIcon  = nullptr;      // 系统托盘
 
     /* 更新窗口位置 */
     inline void SearchFrameUpdate();
     inline void TomatobellFrameUpdate();
+    inline void StatusBarUpdate();
+
+    inline void connectToFileWatcher(my_File *file);
 
     /* 初始化 */
     void initUI();
     void initFile();
     void initSignalSlots();
+    void initSystemTrayIcon();
 
     bool checkFileSave();   // 检查文件是否保存
 

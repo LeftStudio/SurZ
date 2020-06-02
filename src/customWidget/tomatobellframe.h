@@ -19,8 +19,6 @@ public:
     explicit TomatobellFrame(QWidget *parent = nullptr);
     ~TomatobellFrame() Q_DECL_OVERRIDE;
 
-    void startAnimation();
-
     void initTomatobell(int w, int r, int num);
 
 signals:
@@ -36,12 +34,12 @@ private slots:
 private:
     Ui::TomatobellFrame *ui;
 
-    QPropertyAnimation *animation;
+    QPropertyAnimation *animation = nullptr;
     int workMin=0,relaxMin=0,tomatobellNum=0;
     int workSec=0,relaxSec=0;
     int workStep=0,relaxStep=0;
-    bool isWork=true;
-    QTimer *m_Timer=nullptr;
+    bool isWork = true;
+    QTimer *m_Timer = nullptr;
     QDateTime time;
 
     inline void initUI();
@@ -49,8 +47,13 @@ private:
     inline void work();
     inline void relax();
 
-    void closeEvent(QCloseEvent *)     Q_DECL_OVERRIDE;
-    void mouseMoveEvent(QMouseEvent *) Q_DECL_OVERRIDE;
+    inline void startAnimation();
+    inline void endAnimation();
+
+    void showEvent(QShowEvent *event)       Q_DECL_OVERRIDE;
+    void closeEvent(QCloseEvent *event)     Q_DECL_OVERRIDE;
+
+    bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
 };
 
 #endif // TOMATOBELLFRAME_H

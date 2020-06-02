@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>TomatobellFrame</class>
  <widget class="QFrame" name="TomatobellFrame">
@@ -93,7 +93,7 @@ border-radius:10px;
    </property>
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/images/images/Continue.ico</normaloff>:/images/images/Continue.ico</iconset>
+     <normaloff>:/images/images/icon/Continue.ico</normaloff>:/images/images/icon/Continue.ico</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -135,7 +135,7 @@ border-radius:10px;
    </property>
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/images/images/Stop.ico</normaloff>:/images/images/Stop.ico</iconset>
+     <normaloff>:/images/images/icon/Stop.ico</normaloff>:/images/images/icon/Stop.ico</iconset>
    </property>
    <property name="iconSize">
     <size>

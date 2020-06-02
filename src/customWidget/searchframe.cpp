@@ -31,9 +31,19 @@ void SearchFrame::startAnimation()
 {
     animation=new QPropertyAnimation(this,"geometry");
     animation->setDuration(200);
-    animation->setStartValue(QRect(this->pos().x()+393,70,0,0));
-    animation->setEndValue(QRect(this->pos().x(),70,370,30));
+    animation->setStartValue(QRect(this->pos().x()+385,this->pos().y(),0,0));
+    animation->setEndValue(QRect(this->pos().x(),this->pos().y(),370,30));
     animation->start();
+}
+
+void SearchFrame::endAnimation()
+{
+    if(animation!=nullptr)
+    {
+        animation->setStartValue(QRect(this->pos().x(),this->pos().y(),370,this->height()));
+        animation->setEndValue(QRect(this->pos().x()+385,this->pos().y(),0,0));
+        animation->start();
+    }
 }
 
 void SearchFrame::initUI()
@@ -44,14 +54,14 @@ void SearchFrame::initUI()
     ui->SearchLineEdit->setTextMargins(2,2,25,2);
 }
 
-void SearchFrame::initSignalSlots()
+inline void SearchFrame::initSignalSlots()
 {
     connect(ui->CaseSensitive,&QPushButton::clicked,
             [this](bool checked){
         if(checked)
-            ui->CaseSensitive->setIcon(QIcon(":/images/images/CaseSensitive_2.ico"));
+            ui->CaseSensitive->setIcon(QIcon(":/images/images/icon/CaseSensitive_2.ico"));
         else
-            ui->CaseSensitive->setIcon(QIcon(":/images/images/CaseSensitive.ico"));
+            ui->CaseSensitive->setIcon(QIcon(":/images/images/icon/CaseSensitive.ico"));
     });
     connect(ui->FindLastBtn,&QPushButton::clicked,
             [this]{
@@ -91,6 +101,12 @@ void SearchFrame::closeEvent(QCloseEvent *event)
     event->accept();
 }
 
+void SearchFrame::showEvent(QShowEvent *event)
+{
+    this->startAnimation();
+    event->accept();
+}
+
 void SearchFrame::on_OpenBtn_clicked()
 {
     if(isOpen)
@@ -98,7 +114,7 @@ void SearchFrame::on_OpenBtn_clicked()
         ui->DisplaceWidget->hide();
         this->setFixedHeight(50);
         ui->OpenBtn->setFixedHeight(30);
-        ui->OpenBtn->setIcon(QIcon(":/images/images/down.ico"));
+        ui->OpenBtn->setIcon(QIcon(":/images/images/icon/down.ico"));
 
         isOpen=false;
     }
@@ -107,7 +123,7 @@ void SearchFrame::on_OpenBtn_clicked()
         ui->DisplaceWidget->show();
         this->setFixedHeight(90);
         ui->OpenBtn->setFixedHeight(70);
-        ui->OpenBtn->setIcon(QIcon(":/images/images/up.ico"));
+        ui->OpenBtn->setIcon(QIcon(":/images/images/icon/up.ico"));
 
         isOpen=true;
     }
@@ -115,9 +131,7 @@ void SearchFrame::on_OpenBtn_clicked()
 
 void SearchFrame::on_CloseBtn_clicked()
 {
-    animation->setStartValue(QRect(this->pos().x(),70,370,this->height()));
-    animation->setEndValue(QRect(this->pos().x()+393,70,0,0));
-    animation->start();
+    this->endAnimation();
 
     connect(animation,SIGNAL(finished()),this,
             SLOT(close()));

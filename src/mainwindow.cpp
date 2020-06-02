@@ -18,6 +18,7 @@
 #include <QImageReader>
 #include <QInputDialog>
 #include <QStandardPaths>
+#include <QSystemTrayIcon>
 #include <QSound>
 #include <QDebug>
 #include <QDir>
@@ -33,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->initUI();
     this->initSignalSlots();
+    this->initSystemTrayIcon();
     this->initFile();
     this->loadSettings();
 }
@@ -53,10 +55,10 @@ void MainWindow::initUI()
     m_StatusBar->setSaved(true);
     m_StatusBar->setCurpos(1,0,0);
 
-    #ifndef Q_OS_WIN32
+    //#ifndef Q_OS_WIN32
        // ui->menuBar->hide();
        // m_StatusBar->hide();
-    #endif
+    //#endif
 
     // 更换背景
     backgroundGroup=new QActionGroup(this);
@@ -122,12 +124,7 @@ void MainWindow::initFile()
                 return;
             }
 
-            connect(newFile,&my_File::fileChanged,
-                    [this]{
-                if(QMessageBox::question(this,"警告","当前文件已发生变化,是否重新打开",
-                                         QMessageBox::Yes | QMessageBox::No)==QMessageBox::Yes)
-                    this->on_actOpen_triggered();
-            });
+            this->connectToFileWatcher(newFile);
 
             m_File = newFile;
             m_StatusBar->setSaved(true);
@@ -159,6 +156,15 @@ void MainWindow::initSignalSlots()
         this->setWindowFlag(Qt::WindowStaysOnTopHint,checked);
         this->show();
     });
+    connect(ui->actShow,&QAction::triggered,
+            [this]{ this->show(); });
+    connect(ui->actExit,&QAction::triggered,
+            [this]{
+        if(!checkFileSave())
+            return;
+        this->saveSettings();
+        QApplication::exit();
+    });
 
     connect(ui->actLeftAlign,&QAction::triggered,
             [this]{ ui->txtEdit->setAlignment(Qt::AlignLeft); });
@@ -176,25 +182,38 @@ void MainWindow::initSignalSlots()
 
 }
 
+void MainWindow::initSystemTrayIcon()
+{
+    QMenu *m_TrayMenu = new QMenu(this);
+
+    m_TrayMenu->addAction(ui->actShow);
+    m_TrayMenu->addSeparator();
+    m_TrayMenu->addAction(ui->actExit);
+
+    m_SystemTrayIcon = new QSystemTrayIcon(this);
+    m_SystemTrayIcon->setIcon(QIcon(":/images/images/icon/SurZ.ico"));
+    m_SystemTrayIcon->setContextMenu(m_TrayMenu);
+}
+
 void MainWindow::loadSettings()
 {
-    settings=new QSettings(QString("./SurZ_Settings.ini"),QSettings::IniFormat,this);
-    settings->setIniCodec("UTF-8");
+    m_Settings=new QSettings(QString("./SurZ_Settings.ini"),QSettings::IniFormat,this);
+    m_Settings->setIniCodec("UTF-8");
 
-    if(settings->contains("Window/WindowSize"))
-        this->resize(settings->value("Window/WindowSize",QVariant(QSize())).toSize());
+    if(m_Settings->contains("Window/WindowSize"))
+        this->resize(m_Settings->value("Window/WindowSize",QVariant(QSize())).toSize());
 
-    if(settings->contains("Window/WindowPos"))
-        this->move(settings->value("Window/WindowPos",QVariant(QPoint())).toPoint());
+    if(m_Settings->contains("Window/WindowPos"))
+        this->move(m_Settings->value("Window/WindowPos",QVariant(QPoint())).toPoint());
 
-    if(settings->contains("Window/Background"))
+    if(m_Settings->contains("Window/Background"))
     {
-        int background=settings->value("Window/Background",QVariant(int())).toInt();
+        int background=m_Settings->value("Window/Background",QVariant(int())).toInt();
         if(background != 0)
         {
             ui->txtEdit->setStyleSheet(QString("QTextEdit\n"
                                                "{\n"
-                                               "border-image:url(:/backgrounds/backgrounds/background_%1.jpg);\n"
+                                               "border-image:url(:/backgrounds/images/backgrounds/background_%1.jpg);\n"
                                                "padding:3px;\n"
                                                "border-radius:11px;\n"
                                                "}\n"
@@ -203,43 +222,50 @@ void MainWindow::loadSettings()
         }
     }
 
-    if(settings->contains("SurZ/ToolbarText"))
+    if(m_Settings->contains("SurZ/ToolbarText"))
     {
-        bool isChecked=settings->value("SurZ/ToolbarText",QVariant(bool())).toBool();
+        bool isChecked=m_Settings->value("SurZ/ToolbarText",QVariant(bool())).toBool();
         ui->actToolbarStyle->setChecked(isChecked);
         this->on_actToolbarStyle_triggered(isChecked);
     }
 
-    if(settings->contains("SurZ/AutoSave"))
+    if(m_Settings->contains("SurZ/AutoSave"))
     {
-        bool isChecked=settings->value("SurZ/AutoSave",QVariant(bool())).toBool();
+        bool isChecked=m_Settings->value("SurZ/AutoSave",QVariant(bool())).toBool();
         ui->actAutoSave->setChecked(isChecked);
     }
 
-    int size=settings->beginReadArray("RecentlyOpened");
+    if(m_Settings->contains("SurZ/SystemTray"))
+    {
+        bool isChecked=m_Settings->value("SurZ/SystemTray",QVariant(bool())).toBool();
+        ui->actSystemTray->setChecked(isChecked);
+    }
+
+    int size=m_Settings->beginReadArray("RecentlyOpened");
     for (int i=0;i<size;i++)
     {
-        settings->setArrayIndex(i);
-        ui->recentlyOpenedMenu->addAction(new QAction(settings->value("FilePath").toString()));
+        m_Settings->setArrayIndex(i);
+        ui->recentlyOpenedMenu->addAction(new QAction(m_Settings->value("FilePath").toString()));
     }
-    settings->endArray();
+    m_Settings->endArray();
 }
 
 void MainWindow::saveSettings()
 {
-    settings->setValue("Window/WindowSize",QVariant(this->size()));
-    settings->setValue("Window/WindowPos",QVariant(this->pos()));
+    m_Settings->setValue("Window/WindowSize",QVariant(this->size()));
+    m_Settings->setValue("Window/WindowPos",QVariant(this->pos()));
 
-    settings->setValue("SurZ/ToolbarText",QVariant(ui->actToolbarStyle->isChecked()));
-    settings->setValue("SurZ/AutoSave",QVariant(ui->actAutoSave->isChecked()));
+    m_Settings->setValue("SurZ/ToolbarText",QVariant(ui->actToolbarStyle->isChecked()));
+    m_Settings->setValue("SurZ/AutoSave",QVariant(ui->actAutoSave->isChecked()));
+    m_Settings->setValue("SurZ/SystemTray",QVariant(ui->actSystemTray->isChecked()));
 
-    settings->beginWriteArray("RecentlyOpened");
+    m_Settings->beginWriteArray("RecentlyOpened");
     for (int i=2;i<ui->recentlyOpenedMenu->actions().size();i++)
     {
-        settings->setArrayIndex(i-2);
-        settings->setValue("FilePath",ui->recentlyOpenedMenu->actions().at(i)->text());
+        m_Settings->setArrayIndex(i-2);
+        m_Settings->setValue("FilePath",ui->recentlyOpenedMenu->actions().at(i)->text());
     }
-    settings->endArray();
+    m_Settings->endArray();
 }
 
 void MainWindow::on_txtEdit_copyAvailable(bool b)
@@ -362,12 +388,7 @@ void MainWindow::on_recentlyOpenedMenu_triggered(QAction *act)
             return;
         }
 
-        connect(newFile,&my_File::fileChanged,
-                [this]{
-            if(QMessageBox::question(this,"警告","当前文件已发生变化,是否重新打开",
-                                     QMessageBox::Yes | QMessageBox::No)==QMessageBox::Yes)
-                this->on_actOpen_triggered();
-        });
+        this->connectToFileWatcher(newFile);
 
         m_File = newFile;
         m_StatusBar->setSaved(true);
@@ -400,38 +421,44 @@ void MainWindow::on_backgroundMenu_triggered(QAction *act)
                                    "{\n"
                                    "border:3px solid #aaaaff;\n"
                                    "}");
-        settings->setValue("Window/Background",QVariant(0));
+        m_Settings->setValue("Window/Background",QVariant(0));
     }
     else
     {
         ui->txtEdit->setStyleSheet(QString("QTextEdit\n"
                                            "{\n"
-                                           "border-image:url(:/backgrounds/backgrounds/background_%1.jpg);\n"
+                                           "border-image:url(:/backgrounds/images/backgrounds/background_%1.jpg);\n"
                                            "border-radius:11px;\n"
                                            "padding:3px;\n"
                                            "}\n"
                                            ).arg(act->objectName().mid(14)));
-        settings->setValue("Window/Background",QVariant(act->objectName().mid(14)));
+        m_Settings->setValue("Window/Background",QVariant(act->objectName().mid(14)));
     }
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    if(!checkFileSave())
+    if(ui->actSystemTray->isChecked())
+        m_SystemTrayIcon->show();
+    else
     {
-        event->ignore();
-        return;
-    }
-
-    saveSettings();
-    event->accept();
+        if(!checkFileSave())
+        {
+            event->ignore();
+            return;
+        }
+        this->saveSettings();
+        QApplication::exit();
+    }    
 }
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
-    QMainWindow::resizeEvent(event);
     this->SearchFrameUpdate();
     this->TomatobellFrameUpdate();
+    this->StatusBarUpdate();
+
+    QMainWindow::resizeEvent(event);
 }
 
 void MainWindow::on_actOpen_triggered()
@@ -460,12 +487,7 @@ void MainWindow::on_actOpen_triggered()
         return;
     }
 
-    connect(newFile,&my_File::fileChanged,
-            [this]{
-        if(QMessageBox::question(this,"警告","当前文件已发生变化,是否重新打开",
-                                 QMessageBox::Yes | QMessageBox::No)==QMessageBox::Yes)
-            this->on_actOpen_triggered();
-    });
+    this->connectToFileWatcher(newFile);
 
     m_File = newFile;
     m_StatusBar->setSaved(true);
@@ -500,6 +522,7 @@ void MainWindow::on_actSave_triggered()
     else
         text=ui->txtEdit->toPlainText();
 
+    //isWriting = true;
     if(m_File->writeFile(text))
     {
         ui->txtEdit->document()->setModified(false);
@@ -507,6 +530,7 @@ void MainWindow::on_actSave_triggered()
         this->setWindowTitle(QString("书知编辑器 - %1").arg(m_File->getFileInfo().fileName()));
         QSound::play(":/BGM/BGM/saveFileBGM.wav");
     }
+    //isWriting = false;
 
     return;
 }
@@ -529,6 +553,8 @@ void MainWindow::on_actNew_triggered()
 
     if(newFile->writeFile(std::move(QString(""))))
     {
+        this->connectToFileWatcher(newFile);
+
         m_File=newFile;
         this->setWindowTitle(QString("书知编辑器 - %1").arg(m_File->getFileInfo().fileName()));
         ui->txtEdit->clear();
@@ -648,10 +674,11 @@ void MainWindow::TextDisplace(QString searchText, QString displaceText, bool mod
 
 void MainWindow::on_txtEdit_currentCharFormatChanged(const QTextCharFormat &fmt)
 {
-    // 更新粗体，斜体和下划线3种action的checked属性
+    // 更新粗体,斜体和,下划线和删除线4种action的checked属性
     ui->actFontBold->setChecked(fmt.font().bold());
     ui->actFontUnder->setChecked(fmt.fontUnderline());
     ui->actFontItalic->setChecked(fmt.fontItalic());
+    ui->actFontStrikeout->setChecked(fmt.fontStrikeOut());
 
     // 更新字体栏
     if(!ui->txtEdit->textCursor().hasSelection())
@@ -663,16 +690,12 @@ void MainWindow::on_txtEdit_currentCharFormatChanged(const QTextCharFormat &fmt)
 
 void MainWindow::on_actSetTextColor_triggered()
 {
-    QPalette pal=ui->txtEdit->palette();
-    QColor nColor=pal.color(QPalette::Text);
-    QColor ChoseColor=QColorDialog::getColor(nColor,this,("选择颜色"));
+    QTextCharFormat fmt=ui->txtEdit->currentCharFormat();   // 文本字符格式
+    QColor ChoseColor=QColorDialog::getColor(fmt.foreground().color(),this,("选择颜色"));
     if(ChoseColor.isValid())
     {
-        QTextCharFormat fmt;                            //文本字符格式
-        fmt.setForeground(ChoseColor);                  //前景色(即字体色)设为color色
-        QTextCursor cursor = ui->txtEdit->textCursor(); //获取文本光标
-        cursor.mergeCharFormat(fmt);                    //光标后的文字就用该格式显示
-        ui->txtEdit->mergeCurrentCharFormat(fmt);       //QTextEdit使用当前的字符格式
+        fmt.setForeground(ChoseColor);                      // 前景色(即字体色)设为color色
+        ui->txtEdit->mergeCurrentCharFormat(fmt);           // QTextEdit使用当前的字符格式
     }
 }
 
@@ -696,7 +719,6 @@ void MainWindow::on_actSearch_triggered()
     this->SearchFrameUpdate();
     m_SearchFrame->setAttribute(Qt::WA_DeleteOnClose);
     m_SearchFrame->show();
-    m_SearchFrame->startAnimation();
 }
 
 void MainWindow::on_actTomatobell_triggered()
@@ -727,7 +749,6 @@ void MainWindow::on_actTomatobell_triggered()
     m_TomatobellFrame->initTomatobell(workMin,relaxMin,tomatobellNum);
     m_TomatobellFrame->setAttribute(Qt::WA_DeleteOnClose);
     m_TomatobellFrame->show();
-    m_TomatobellFrame->startAnimation();
 }
 
 void MainWindow::on_txtEdit_openFile(QString filePath)
@@ -751,12 +772,7 @@ void MainWindow::on_txtEdit_openFile(QString filePath)
         return;
     }
 
-    connect(newFile,&my_File::fileChanged,
-            [this]{
-        if(QMessageBox::question(this,"警告","当前文件已发生变化,是否重新打开",
-                                 QMessageBox::Yes | QMessageBox::No)==QMessageBox::Yes)
-            this->on_actOpen_triggered();
-    });
+    this->connectToFileWatcher(newFile);
 
     m_File = newFile;
     m_StatusBar->setSaved(true);
@@ -927,11 +943,27 @@ void MainWindow::on_actConcise_triggered(bool checked)
 void MainWindow::SearchFrameUpdate()
 {
     if(m_SearchFrame!=nullptr)
-        m_SearchFrame->move(QPoint(this->width()-393,70));
+        m_SearchFrame->move(QPoint(this->width()-375,80));
 }
 
 void MainWindow::TomatobellFrameUpdate()
 {
     if(m_TomatobellFrame!=nullptr)
-        m_TomatobellFrame->move(QPoint(this->width()-85,this->height()-75));
+        m_TomatobellFrame->move(QPoint(this->width()-85,this->height()-55));
+}
+
+void MainWindow::StatusBarUpdate()
+{
+    if(m_StatusBar!=nullptr&&this->width()<750)
+        m_StatusBar->resize(this->width()-430,20);
+}
+
+void MainWindow::connectToFileWatcher(my_File *file)
+{
+    connect(file,&my_File::fileChanged,
+            [this]{
+        if(QMessageBox::question(this,"警告","当前文件已发生变化,是否重新打开",
+                                 QMessageBox::Yes | QMessageBox::No)==QMessageBox::Yes)
+            this->on_actOpen_triggered();
+    });
 }
