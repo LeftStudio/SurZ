@@ -1,6 +1,7 @@
 ﻿#include "my_switchbutton.h"
 
 #include <QPainter>
+#include <QPainterPath>
 #include <QMouseEvent>
 
 my_SwitchButton::my_SwitchButton(QWidget *parent) :

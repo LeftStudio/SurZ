@@ -16,7 +16,7 @@
   <property name="styleSheet">
    <string notr="true">QDialog
 {
-background:rgb(245, 245, 245);
+background:rgb(233,237,245);
 }</string>
   </property>
   <widget class="QPushButton" name="OK_Button">
@@ -37,22 +37,19 @@ background:rgb(245, 245, 245);
     <string notr="true">QPushButton
 {
 border-style:none;
-padding:10px;
-border-radius:6px;
-color:#E6F8F5;
-background:rgb(22,155,213);
+padding:3px;
+border-radius:7px;
+background:#dde3f0;
 }
 
 QPushButton:hover
 {
-color:#FFFFFF;
-background:rgb(70, 197, 255);
+background:rgb(250, 250, 250);
 }
 
 QPushButton:pressed
 {
-color:#A7EEE6;
-background:rgb(19, 139, 190);
+background:rgb(220, 220, 220);
 }</string>
    </property>
    <property name="text">

@@ -8,7 +8,6 @@
         <file>images/icon/floppy_128px_1222830_easyicon.net.ico</file>
         <file>images/icon/text_underline_32px_1223113_easyicon.net.ico</file>
         <file>images/icon/text_bold_104px_1223110_easyicon.net.ico</file>
-        <file>images/icon/arrow_left_curved_128px_1223140_easyicon.net.ico</file>
         <file>images/icon/clipboard_128px_1222862_easyicon.net.ico</file>
         <file>images/icon/text_color_118px_1223111_easyicon.net.ico</file>
         <file>images/icon/text_italic_101px_1223112_easyicon.net.ico</file>
@@ -38,6 +37,10 @@
         <file>images/icon/Left_Studio.gif</file>
         <file>images/icon/text_strikeout.ico</file>
         <file>images/icon/SurZ.ico</file>
+        <file>images/icon/translation.ico</file>
+        <file>images/icon/exit.ico</file>
+        <file>images/icon/redo.ico</file>
+        <file>images/icon/undo.ico</file>
     </qresource>
     <qresource prefix="/tr">
         <file>tr/qtbase_zh_CN.qm</file>

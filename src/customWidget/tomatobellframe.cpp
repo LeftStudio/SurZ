@@ -10,8 +10,8 @@
 #include <QMouseEvent>
 #include <QCloseEvent>
 #include <QMessageBox>
+#include <QEventLoop>
 #include <QTimer>
-//#include <QDebug>
 
 #if _MSC_VER >= 1600
     #pragma execution_character_set("utf-8")
@@ -62,20 +62,20 @@ void TomatobellFrame::relax()
 
 void TomatobellFrame::startAnimation()
 {
-    animation=new QPropertyAnimation(this,"geometry");
-    animation->setDuration(150);
-    animation->setStartValue(QRect(this->pos().x()+85,this->pos().y(),0,50));
-    animation->setEndValue(QRect(this->pos().x(),this->pos().y(),80,50));
-    animation->start();
+    m_animation=new QPropertyAnimation(this,"geometry");
+    m_animation->setDuration(200);
+    m_animation->setStartValue(QRect(this->pos().x()+85,this->pos().y(),0,50));
+    m_animation->setEndValue(QRect(this->pos().x(),this->pos().y(),80,50));
+    m_animation->start();
 }
 
 void TomatobellFrame::endAnimation()
 {
-    if(animation!=nullptr)
+    if(m_animation!=nullptr)
     {
-        animation->setStartValue(QRect(this->pos().x(),this->pos().y(),150,50));
-        animation->setEndValue(QRect(this->pos().x()+85,this->pos().y(),0,50));
-        animation->start();
+        m_animation->setStartValue(QRect(this->pos().x(),this->pos().y(),150,50));
+        m_animation->setEndValue(QRect(this->pos().x()+85,this->pos().y(),0,50));
+        m_animation->start();
     }
 }
 
@@ -150,22 +150,29 @@ bool TomatobellFrame::eventFilter(QObject *obj, QEvent *event)
     if(obj==this)
     {
         static int curX,curY;
-        if(event->type() == QEvent::HoverEnter)
+        static bool isOpened = false;
+        if(event->type() == QEvent::HoverEnter && !isOpened)
         {
             curX = this->pos().x();
             curY = this->pos().y();
             this->setFixedWidth(150);
-            animation->setStartValue(QRect(curX,curY,80,50));
-            animation->setEndValue(QRect(curX-70,curY,150,50));
-            animation->start();
+            m_animation->setStartValue(QRect(curX,curY,80,50));
+            m_animation->setEndValue(QRect(curX-70,curY,150,50));
+            m_animation->start();
+            isOpened = true;
             return true;
         }
         else if(event->type() == QEvent::HoverLeave)
         {
             this->setFixedWidth(80);
-            animation->setStartValue(QRect(this->pos().x(),this->pos().y(),150,50));
-            animation->setEndValue(QRect(curX,curY,80,50));
-            animation->start();
+            m_animation->setStartValue(QRect(this->pos().x(),this->pos().y(),150,50));
+            m_animation->setEndValue(QRect(curX,curY,80,50));
+            m_animation->start();
+
+            QEventLoop loop;
+            connect(m_animation,&QPropertyAnimation::finished,&loop,&QEventLoop::quit);
+            loop.exec();
+            isOpened = false;
             return true;
         }
     }
@@ -177,8 +184,11 @@ void TomatobellFrame::on_StopBtn_clicked()
     m_Timer->stop();
     this->endAnimation();
 
-    connect(animation,SIGNAL(finished()),this,
-            SLOT(close()));
+    QEventLoop loop;
+    connect(m_animation,&QPropertyAnimation::finished,&loop,&QEventLoop::quit);
+    loop.exec();
+
+    this->close();
 }
 
 void TomatobellFrame::on_PauseBtn_clicked()

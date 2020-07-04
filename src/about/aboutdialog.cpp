@@ -32,12 +32,10 @@ bool AboutDialog::eventFilter(QObject *obj, QEvent *event)
     Q_UNUSED(obj);
     if (event->type() == QEvent::MouseButtonRelease)  // 鼠标点击
     {
-        static int Egg=0;
+        static int Egg=1;
 
         switch (Egg)
         {
-        case 0:QMessageBox::information(this,("(*^▽^*)"),("新年快乐"));
-            break;
         case 1:QMessageBox::information(this,("ヽ(￣▽￣)ﾉ"),("这个程序没有彩蛋"));
             break;
         case 2:QMessageBox::information(this,("(～￣▽￣)～ "),("这个程序真的没有彩蛋"));
@@ -48,7 +46,7 @@ bool AboutDialog::eventFilter(QObject *obj, QEvent *event)
             break;
         case 5:QMessageBox::information(this,("o(*≧д≦)o!!"),("行行行，我给你彩蛋，你能走开吗?"));
             break;
-        case 6:QMessageBox::about(this,("(｡◕ᴗ◕｡)づ╭❤～"),("╭——ゞこ≈—————ヽ☆——ャ╮\n\n  ☆喜欢..や偷看..ゞě.伱的脸ぐ ☆\n\n  ┊ず..带着ぺ股.ふ.香甜的气味..ヅ┊\n\n╰————☆╰——— .+.+.ヽ——╯"));
+        case 6:QMessageBox::about(this,("(｡◕ᴗ◕｡)づ╭❤～"),("╭——ゞこ≈—————ヽ☆——ャ╮\n\n  ☆喜欢..や偷看..ゞě.伱的脸ぐ ☆\n\n  ┊ず..带着ぺ股.ふ.香甜的气味..ヅ┊\n\n╰————☆╰——— .+.+.ヽ——╯\n\n喵内~~~"));
             break;
         default:QMessageBox::information(this,("(๑＞ڡ＜)☆"),("给开发者一点鸡腿吧!么么哒(๑＞ڡ＜)✿ "));
             break;

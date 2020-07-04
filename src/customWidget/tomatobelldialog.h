@@ -15,7 +15,7 @@ public:
     explicit TomatobellDialog(QWidget *parent = nullptr);
     ~TomatobellDialog();
 
-    void initTomatobellDialog(int *w,int *r,int *num)
+    void setTomatobell(int *w,int *r,int *num)
     {
         workMin=w;
         relaxMin=r;

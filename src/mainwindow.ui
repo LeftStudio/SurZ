@@ -9,14 +9,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>909</width>
+    <width>910</width>
     <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>670</width>
-    <height>400</height>
+    <width>695</width>
+    <height>440</height>
    </size>
   </property>
   <property name="font">
@@ -33,24 +33,27 @@
   <property name="styleSheet">
    <string notr="true">QMainWindow
 {
-background:rgb(250,250,250);
+background:rgb(233,237,245);
 }
 
 QMenu::item:selected
 {
-background:#aaaaff;
-color:rgb(250,250,250);
+background-color:rgb(113, 114, 136);
+color: rgb(229, 233, 240);
+border-radius:5px;
+}
+
+QMenu::item:pressed
+{
+background-color:rgb(91, 93, 116);
+color: rgb(236, 239, 244);
+border-radius:5px;
 }
 
 QToolBar
 {
-/*border-style:none;
-border-radius:10px;
-padding:3px;
-border:3px solid white;
-background:lightgray;*/
 border-style:none;
-background:rgb(250,250,250);
+background:rgb(233,237,245);
 }
 
 QToolBar::separator
@@ -63,17 +66,21 @@ height:2px;
 
 QToolBar::handle
 {
-background:rgb(250,250,250);
+background:rgb(233,237,245);
 }
 
-QMenuBar
+QToolButton
 {
-background:rgb(250,250,250);
+margin:1 1px;
+padding:1px;
 }
 
-QStatusBar
+QToolButton:checked
 {
-background:rgb(250,250,250);
+margin:1 1px;
+background-color:#bbc0dd;
+border-radius:5px;
+padding:2px;
 }</string>
   </property>
   <property name="inputMethodHints">
@@ -120,16 +127,70 @@ background:rgb(250,250,250);
     <property name="styleSheet">
      <string notr="true">QTextEdit
 {
-background-color: transparent;
-background:rgb(242,242,242);
+background:rgb(206,210,220);
 padding:3px;
 border-radius:11px;
-border:3px solid #DCE4EC;
 }
 
-QTextEdit:focus
-{
-border:3px solid #aaaaff;
+QScrollArea {
+    border: none;
+    background: transparent;
+}
+
+QScrollArea &gt; QWidget &gt; QWidget {
+    background: transparent;
+}
+
+QScrollBar:vertical {
+    border:none;
+    background: transparent;
+    width: 10px;
+}
+
+QScrollBar::handle:vertical {
+    border-radius:5px;
+    background: #DDDDDD;
+    min-height: 60px;
+}
+QScrollBar::add-line:vertical {
+    border: none;
+    height: 0px;
+}
+
+QScrollBar::sub-line:vertical {
+    border: none;
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: transparent;
+}
+
+QScrollBar:horizontal {
+    border:none;
+    background: transparent;
+    height:10px;
+}
+
+QScrollBar::handle:horizontal {
+    border-radius:5px;
+    background: #DDDDDD;
+    min-width: 60px;
+}
+
+QScrollBar::add-line:horizontal {
+    border: none;
+    width: 0px;
+}
+
+QScrollBar::sub-line:horizontal {
+    border: none;
+    width: 0px;
+}
+
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal {
+    background:  transparent;
 }</string>
     </property>
     <property name="locale">
@@ -157,9 +218,29 @@ border:3px solid #aaaaff;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>909</width>
+     <width>910</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QMenuBar
+{
+background-color:transparent;
+}
+
+QMenuBar::item:selected
+{
+background-color:rgb(113, 114, 136);
+color: rgb(229, 233, 240);
+border-radius:5px;
+}
+
+QMenuBar::item:pressed
+{
+background-color:rgb(91, 93, 116);
+color: rgb(236, 239, 244);
+border-radius:5px;
+}</string>
    </property>
    <widget class="QMenu" name="file">
     <property name="title">
@@ -175,6 +256,7 @@ border:3px solid #aaaaff;
     <addaction name="actNew"/>
     <addaction name="actOpen"/>
     <addaction name="recentlyOpenedMenu"/>
+    <addaction name="actAutoOpen"/>
     <addaction name="separator"/>
     <addaction name="actSave"/>
     <addaction name="actAutoSave"/>
@@ -190,9 +272,14 @@ border:3px solid #aaaaff;
     <property name="title">
      <string>编辑(&amp;E)</string>
     </property>
+    <addaction name="actUndo"/>
+    <addaction name="actRedo"/>
+    <addaction name="separator"/>
     <addaction name="actCut"/>
     <addaction name="actCopy"/>
     <addaction name="actPaste"/>
+    <addaction name="separator"/>
+    <addaction name="actSelectAll"/>
     <addaction name="separator"/>
     <addaction name="actClear"/>
     <addaction name="separator"/>
@@ -305,13 +392,10 @@ border:3px solid #aaaaff;
    <addaction name="actSave"/>
    <addaction name="actClear"/>
    <addaction name="separator"/>
-   <addaction name="actCut"/>
-   <addaction name="actCopy"/>
-   <addaction name="actPaste"/>
-   <addaction name="separator"/>
    <addaction name="actSearch"/>
    <addaction name="actWindowTop"/>
    <addaction name="actUpdateToGit"/>
+   <addaction name="actTranslation"/>
   </widget>
   <widget class="QToolBar" name="TextStyleToolBar">
    <property name="font">
@@ -363,24 +447,13 @@ border:3px solid #aaaaff;
    <addaction name="actInsterForm"/>
    <addaction name="actInsertDate"/>
   </widget>
-  <widget class="QToolBar" name="toolBar">
-   <property name="windowTitle">
-    <string>toolBar</string>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
   <action name="actCut">
    <property name="icon">
     <iconset resource="../resource/res.qrc">
      <normaloff>:/images/images/icon/cut_128px_1223050_easyicon.net.ico</normaloff>:/images/images/icon/cut_128px_1223050_easyicon.net.ico</iconset>
    </property>
    <property name="text">
-    <string>剪切</string>
+    <string>剪切(&amp;T)</string>
    </property>
    <property name="toolTip">
     <string>剪切</string>
@@ -404,7 +477,7 @@ border:3px solid #aaaaff;
     </iconset>
    </property>
    <property name="text">
-    <string>复制</string>
+    <string>复制(&amp;C)</string>
    </property>
    <property name="font">
     <font>
@@ -424,7 +497,7 @@ border:3px solid #aaaaff;
      <normaloff>:/images/images/icon/clipboard_128px_1222862_easyicon.net.ico</normaloff>:/images/images/icon/clipboard_128px_1222862_easyicon.net.ico</iconset>
    </property>
    <property name="text">
-    <string>粘贴</string>
+    <string>粘贴(&amp;P)</string>
    </property>
    <property name="font">
     <font>
@@ -587,7 +660,7 @@ border:3px solid #aaaaff;
   <action name="actExit">
    <property name="icon">
     <iconset resource="../resource/res.qrc">
-     <normaloff>:/images/images/icon/arrow_left_curved_128px_1223140_easyicon.net.ico</normaloff>:/images/images/icon/arrow_left_curved_128px_1223140_easyicon.net.ico</iconset>
+     <normaloff>:/images/images/icon/exit.ico</normaloff>:/images/images/icon/exit.ico</iconset>
    </property>
    <property name="text">
     <string>退出</string>
@@ -1119,6 +1192,9 @@ border:3px solid #aaaaff;
      <family>微软雅黑</family>
     </font>
    </property>
+   <property name="shortcut">
+    <string>Alt+D</string>
+   </property>
   </action>
   <action name="actShow">
    <property name="text">
@@ -1131,6 +1207,61 @@ border:3px solid #aaaaff;
    </property>
    <property name="text">
     <string>退出至系统托盘</string>
+   </property>
+  </action>
+  <action name="actSelectAll">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>全选</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actUndo">
+   <property name="icon">
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/undo.ico</normaloff>:/images/images/icon/undo.ico</iconset>
+   </property>
+   <property name="text">
+    <string>撤销(&amp;U)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="actRedo">
+   <property name="icon">
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/redo.ico</normaloff>:/images/images/icon/redo.ico</iconset>
+   </property>
+   <property name="text">
+    <string>重做(&amp;R)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+Z</string>
+   </property>
+  </action>
+  <action name="actTranslation">
+   <property name="icon">
+    <iconset resource="../resource/res.qrc">
+     <normaloff>:/images/images/icon/translation.ico</normaloff>:/images/images/icon/translation.ico</iconset>
+   </property>
+   <property name="text">
+    <string>划词翻译</string>
+   </property>
+  </action>
+  <action name="actAutoOpen">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>自动打开上次关闭文件</string>
    </property>
   </action>
  </widget>
@@ -1191,6 +1322,54 @@ border:3px solid #aaaaff;
     <hint type="destinationlabel">
      <x>338</x>
      <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actSelectAll</sender>
+   <signal>triggered()</signal>
+   <receiver>txtEdit</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>467</x>
+     <y>328</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actUndo</sender>
+   <signal>triggered()</signal>
+   <receiver>txtEdit</receiver>
+   <slot>undo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>467</x>
+     <y>328</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actRedo</sender>
+   <signal>triggered()</signal>
+   <receiver>txtEdit</receiver>
+   <slot>redo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>467</x>
+     <y>328</y>
     </hint>
    </hints>
   </connection>

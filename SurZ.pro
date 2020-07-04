@@ -4,14 +4,15 @@
 #
 #-------------------------------------------------
 
-QT       += core gui multimedia
+QT       += core gui multimedia network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = My_TextEdit
+TARGET = SurZ
+
 TEMPLATE = app
 
-VERSION = 1.5.0.0    # 1.5.0.0
+VERSION = 1.5.0.0    # 1.5.0.0 Beta
 
 RC_ICONS = $$_PRO_FILE_PWD_/resource/images/icon/SurZ.ico
 

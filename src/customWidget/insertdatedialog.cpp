@@ -23,11 +23,6 @@ InsertDateDialog::InsertDateDialog(QWidget *parent) :
     this->initUI();
     this->initTime();
 
-    connect(ui->OK_Btn,&QPushButton::clicked,
-            [this]{
-        *DateTimeString=ui->DateFormatList->currentItem()->text();
-        this->accept();
-    });
     connect(ui->DateFormatList,&QListWidget::itemDoubleClicked,
             [this](QListWidgetItem *item){
         *DateTimeString=item->text();

@@ -34,7 +34,7 @@ private slots:
 private:
     Ui::TomatobellFrame *ui;
 
-    QPropertyAnimation *animation = nullptr;
+    QPropertyAnimation *m_animation = nullptr;
     int workMin=0,relaxMin=0,tomatobellNum=0;
     int workSec=0,relaxSec=0;
     int workStep=0,relaxStep=0;

@@ -5,8 +5,6 @@
 #include <QFile>
 #include <QFileInfo>
 
-class QFileSystemWatcher;
-
 class my_File : public QObject
 {
     Q_OBJECT
@@ -20,10 +18,6 @@ public:
 
     bool isRichTextFile() const { return !(m_FileInfo.suffix()=="txt"); }
 
-    //void setFileName(const QString& fileName);
-
-    //QFileSystemWatcher *getFileWatcher() const { return m_FileWatcher; }
-
     QFileInfo getFileInfo() const { return m_FileInfo; }
 
 signals:
@@ -32,9 +26,6 @@ signals:
 private:
     QFile m_File;
     QFileInfo m_FileInfo;
-    QFileSystemWatcher *m_FileWatcher = nullptr;
-
-    bool isReadWrite = false;
 
 };
 

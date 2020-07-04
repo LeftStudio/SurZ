@@ -24,16 +24,16 @@
   <property name="styleSheet">
    <string notr="true">QDialog
 {
-background:rgb(238,238,238);
+background:rgb(233,237,245);
 }</string>
   </property>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>30</y>
-     <width>170</width>
-     <height>40</height>
+     <y>35</y>
+     <width>80</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="font">
@@ -44,8 +44,11 @@ background:rgb(238,238,238);
      <bold>true</bold>
     </font>
    </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;番茄钟:&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;个&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;番茄钟:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QSpinBox" name="tomatobellNum">
@@ -74,8 +77,8 @@ background:rgb(238,238,238);
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>94</y>
-     <width>175</width>
+     <y>95</y>
+     <width>85</width>
      <height>20</height>
     </rect>
    </property>
@@ -88,7 +91,7 @@ background:rgb(238,238,238);
     </font>
    </property>
    <property name="text">
-    <string>工作时间:         分钟</string>
+    <string>工作时间:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
@@ -96,7 +99,7 @@ background:rgb(238,238,238);
     <rect>
      <x>60</x>
      <y>130</y>
-     <width>175</width>
+     <width>85</width>
      <height>20</height>
     </rect>
    </property>
@@ -109,15 +112,15 @@ background:rgb(238,238,238);
     </font>
    </property>
    <property name="text">
-    <string>休息时间:         分钟</string>
+    <string>休息时间:</string>
    </property>
   </widget>
   <widget class="QSpinBox" name="workMin">
    <property name="geometry">
     <rect>
-     <x>149</x>
+     <x>150</x>
      <y>90</y>
-     <width>41</width>
+     <width>40</width>
      <height>30</height>
     </rect>
    </property>
@@ -186,22 +189,19 @@ background:rgb(238,238,238);
     <string notr="true">QPushButton
 {
 border-style:none;
-padding:10px;
-border-radius:6px;
-color:#E6F8F5;
-background:rgb(22,155,213);
+padding:3px;
+border-radius:7px;
+background:#dde3f0;
 }
 
 QPushButton:hover
 {
-color:#FFFFFF;
-background:rgb(70, 197, 255);
+background:rgb(250, 250, 250);
 }
 
 QPushButton:pressed
 {
-color:#A7EEE6;
-background:rgb(19, 139, 190);
+background:rgb(220, 220, 220);
 }</string>
    </property>
    <property name="text">
@@ -226,11 +226,10 @@ background:rgb(19, 139, 190);
     <string notr="true">QPushButton
 {
 border-style:none;
-padding:2px;
-border-radius:5px;
+padding:3px;
+border-radius:7px;
 border:1px solid rgb(119,119,119);
-color:black;
-background:white;
+background:rgb(220,227,242);
 }
 
 QPushButton:hover
@@ -245,6 +244,72 @@ background:rgb(220, 220, 220);
    </property>
    <property name="text">
     <string>取消</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>35</y>
+     <width>31</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>18</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>个</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>195</x>
+     <y>95</y>
+     <width>42</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>分钟</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>195</x>
+     <y>130</y>
+     <width>42</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>14</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>分钟</string>
    </property>
   </widget>
  </widget>

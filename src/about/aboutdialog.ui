@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>310</width>
-    <height>390</height>
+    <width>280</width>
+    <height>405</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -29,34 +29,34 @@
   <property name="styleSheet">
    <string notr="true">QDialog
 {
-background:white;
+background:rgb(233,237,245);
 }</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>230</y>
-     <width>311</width>
-     <height>121</height>
+     <y>215</y>
+     <width>280</width>
+     <height>161</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>微软雅黑</family>
-     <pointsize>10</pointsize>
+     <pointsize>11</pointsize>
      <weight>50</weight>
      <bold>false</bold>
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;书知编辑器&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;By Left Studio&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;1.5 Beta&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://left-studio.gitee.io&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;Left-Studio.gitee.io&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;书知编辑器&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;By Left Studio&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;1.5 Beta&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;https://left-studio.gitee.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;left-studio.gitee.io&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;https://afdian.net/@LeftStudio&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#717288;&quot;&gt;请作者一杯咖啡&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="logoLabel">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>15</x>
      <y>0</y>
      <width>230</width>
      <height>230</height>

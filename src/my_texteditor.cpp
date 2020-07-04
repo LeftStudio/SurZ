@@ -5,23 +5,27 @@
 
 #include "my_texteditor.h"
 
-#include <QMimeData>
-#include <QImageReader>
-#include <QGraphicsOpacityEffect>
-#include <QFileInfo>
 #include <QUrl>
+#include <QMenu>
+#include <QAction>
+#include <QMimeData>
+#include <QFileInfo>
+#include <QImageReader>
+#include <QContextMenuEvent>
+
+#if _MSC_VER >= 1600
+    #pragma execution_character_set("utf-8")
+#endif
 
 My_TextEditor::My_TextEditor(QWidget *parent) :
-    QTextEdit(parent)
+    QTextEdit(parent),
+    m_contextMenu(new QMenu(this))
 {
     // 调整字体背景色
-    QPalette palette=this->palette();
-    palette.setColor(QPalette::Highlight,QColor(22,155,213));
-    palette.setBrush(QPalette::Base,QBrush(QColor(242,242,242,0)));
+    QPalette palette = this->palette();
+    palette.setColor(QPalette::Highlight,QColor(93,99,121));
 
     this->setPalette(palette);
-
-    //this->setAutoFillBackground(true);
 }
 
 bool My_TextEditor::canInsertFromMimeData(const QMimeData *source) const
@@ -54,6 +58,11 @@ void My_TextEditor::insertFromMimeData(const QMimeData *source)
         QTextEdit::insertFromMimeData(source);
 }
 
+void My_TextEditor::contextMenuEvent(QContextMenuEvent *event)
+{
+    m_contextMenu->exec(event->globalPos());
+}
+
 void My_TextEditor::dropImage(const QUrl &url, const QImage &image)
 {
     if (!image.isNull())
@@ -65,16 +74,18 @@ void My_TextEditor::dropImage(const QUrl &url, const QImage &image)
         m_ImageSizeDialog=new ImageSizeDialog();
         m_ImageSizeDialog->initImageSize(&width,&height);
         m_ImageSizeDialog->setAttribute(Qt::WA_DeleteOnClose);
-        m_ImageSizeDialog->exec();
+        if(m_ImageSizeDialog->exec() == QDialog::Accepted)
+        {
+            QTextImageFormat ImageFormat;
+            ImageFormat.setWidth(width);
+            ImageFormat.setHeight(height);
+            ImageFormat.setName(url.toString());
+
+            // 将图片插入到QTextEdit
+            this->document()->addResource(QTextDocument::ImageResource, url, image);
+            this->textCursor().insertImage(ImageFormat);
+        }
         m_ImageSizeDialog=nullptr;
-
-        QTextImageFormat ImageFormat;
-        ImageFormat.setWidth(width);
-        ImageFormat.setHeight(height);
-        ImageFormat.setName(url.toString());
-
-        this->document()->addResource(QTextDocument::ImageResource, url, image);
-        this->textCursor().insertImage(ImageFormat);
     }
 }
 

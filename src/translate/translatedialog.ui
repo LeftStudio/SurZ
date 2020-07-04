@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TranslateDialog</class>
+ <widget class="QDialog" name="TranslateDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>290</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>400</width>
+    <height>290</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>550</width>
+    <height>350</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>微软雅黑</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>翻译</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog
+{
+background:#e9edf5;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <property name="spacing">
+    <number>6</number>
+   </property>
+   <property name="bottomMargin">
+    <number>9</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,1">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0">
+       <property name="spacing">
+        <number>6</number>
+       </property>
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="transMode_auto2zh">
+         <property name="minimumSize">
+          <size>
+           <width>40</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>40</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>微软雅黑</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+border-style:none;
+padding:3px;
+border-radius:9px;
+background:#dde3f0;
+}
+
+QPushButton:hover
+{
+background:rgb(250, 250, 250);
+}
+
+QPushButton:pressed
+{
+background:rgb(220, 220, 220);
+}
+
+QPushButton:checked
+{
+background:rgb(131,144,179);
+}</string>
+         </property>
+         <property name="text">
+          <string>Zh</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="transMode_auto2en">
+         <property name="minimumSize">
+          <size>
+           <width>40</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>40</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>微软雅黑</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+border-style:none;
+padding:3px;
+border-radius:11px;
+background:#dde3f0;
+}
+
+QPushButton:hover
+{
+background:rgb(250, 250, 250);
+}
+
+QPushButton:pressed
+{
+background:rgb(220, 220, 220);
+}
+
+QPushButton:checked
+{
+background:rgb(131,144,179);
+}</string>
+         </property>
+         <property name="text">
+          <string>En</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="transMode_auto2ja">
+         <property name="minimumSize">
+          <size>
+           <width>40</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>40</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>微软雅黑</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+border-style:none;
+padding:3px;
+border-radius:11px;
+background:#dde3f0;
+}
+
+QPushButton:hover
+{
+background:rgb(250, 250, 250);
+}
+
+QPushButton:pressed
+{
+background:rgb(220, 220, 220);
+}
+
+QPushButton:checked
+{
+background:rgb(131,144,179);
+}</string>
+         </property>
+         <property name="text">
+          <string>Jp</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QPlainTextEdit" name="queryTextEdit">
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPlainTextEdit
+{
+background:#dde3f0;
+border-style:none;
+padding:3px;
+border-radius:11px;
+}</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QPlainTextEdit" name="resultTextEdit">
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPlainTextEdit
+{
+background:#dde3f0;
+border-style:none;
+padding:3px;
+border-radius:11px;
+}</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>queryTextEdit</tabstop>
+  <tabstop>resultTextEdit</tabstop>
+  <tabstop>transMode_auto2zh</tabstop>
+  <tabstop>transMode_auto2en</tabstop>
+  <tabstop>transMode_auto2ja</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

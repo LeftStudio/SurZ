@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>220</width>
+    <width>230</width>
     <height>20</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>230</width>
+    <height>20</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>230</width>
+    <height>20</height>
+   </size>
   </property>
   <property name="font">
    <font>
@@ -21,10 +33,13 @@
   <property name="styleSheet">
    <string notr="true">QFrame
 {
-background:rgb(250,250,250);
+background:rgb(233,237,245);
 }</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -32,6 +47,9 @@ background:rgb(250,250,250);
     <number>0</number>
    </property>
    <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>

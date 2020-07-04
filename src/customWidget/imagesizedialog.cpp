@@ -43,7 +43,7 @@ void ImageSizeDialog::on_OK_Button_clicked()
         *ImageWidth=ui->WidthSpinBox->value();
         *ImageHeight=ui->HeightSpinBox->value();
     }
-    this->close();
+    this->accept();
 }
 
 void ImageSizeDialog::on_KeepSizeCheck_checkedChanged(bool checked)

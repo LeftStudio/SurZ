@@ -14,33 +14,12 @@
    <string>Frame</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QFrame
+   <string notr="true">#SearchFrame
 {
 border-style:none;
 border-radius:10px;
 padding:3px;
-border:3px solid white;
-background:lightgray;
-}
-
-QPushButton
-{
-border-style:none;
-padding:2px;
-border-radius:5px;
-border:1px solid rgb(119,119,119);
-color:black;
-background:white;
-}
-
-QPushButton:hover
-{
-background:rgb(250, 250, 250);
-}
-
-QPushButton:pressed
-{
-background:rgb(220, 220, 220);
+background:#e9edf5;
 }</string>
   </property>
   <widget class="QPushButton" name="OpenBtn">
@@ -62,11 +41,9 @@ background:rgb(220, 220, 220);
     <string notr="true">QPushButton
 {
 border-style:none;
-padding:2px;
-border-radius:5px;
-border:1px solid rgb(119,119,119);
-color:black;
-background:white;
+padding:3px;
+border-radius:7px;
+background:#dde3f0;
 }
 
 QPushButton:hover
@@ -83,7 +60,7 @@ background:rgb(220, 220, 220);
     <string/>
    </property>
    <property name="icon">
-    <iconset resource="res.qrc">
+    <iconset resource="../../resource/res.qrc">
      <normaloff>:/images/images/icon/down.ico</normaloff>:/images/images/icon/down.ico</iconset>
    </property>
   </widget>
@@ -106,11 +83,9 @@ background:rgb(220, 220, 220);
     <string notr="true">QPushButton
 {
 border-style:none;
-padding:2px;
-border-radius:5px;
-border:1px solid rgb(119,119,119);
-color:black;
-background:white;
+padding:3px;
+border-radius:7px;
+background:#dde3f0;
 }
 
 QPushButton:hover
@@ -141,7 +116,7 @@ background:rgb(220, 220, 220);
     <property name="font">
      <font>
       <family>微软雅黑</family>
-      <pointsize>10</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="toolTip">
@@ -151,14 +126,9 @@ background:rgb(220, 220, 220);
      <string notr="true">QLineEdit
 {
 border-style:none;
-padding:2px;
-border-radius:5px;
-border:2px solid #DCE4EC;
-}
-
-QLineEdit:focus
-{
-border:2px solid rgb(22,155,213);
+padding:3px;
+border-radius:7px;
+background:#dde3f0;
 }</string>
     </property>
     <property name="placeholderText">
@@ -184,7 +154,7 @@ border:2px solid rgb(22,155,213);
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="res.qrc">
+     <iconset resource="../../resource/res.qrc">
       <normaloff>:/images/images/icon/Displace.ico</normaloff>:/images/images/icon/Displace.ico</iconset>
     </property>
    </widget>
@@ -197,6 +167,9 @@ border:2px solid rgb(22,155,213);
       <height>30</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;全部替换&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="whatsThis">
      <string>全部替换</string>
     </property>
@@ -204,7 +177,7 @@ border:2px solid rgb(22,155,213);
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="res.qrc">
+     <iconset resource="../../resource/res.qrc">
       <normaloff>:/images/images/icon/DisplaceAll.ico</normaloff>:/images/images/icon/DisplaceAll.ico</iconset>
     </property>
     <property name="iconSize">
@@ -225,7 +198,23 @@ border:2px solid rgb(22,155,213);
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">QPushButton
+{
+border-style:none;
+padding:3px;
+border-radius:7px;
+background:#dde3f0;
+}
+
+QPushButton:hover
+{
+background:rgb(250, 250, 250);
+}
+
+QPushButton:pressed
+{
+background:rgb(220, 220, 220);
+}</string>
    </property>
    <widget class="QLineEdit" name="SearchLineEdit">
     <property name="geometry">
@@ -245,7 +234,7 @@ border:2px solid rgb(22,155,213);
     <property name="font">
      <font>
       <family>微软雅黑</family>
-      <pointsize>10</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="whatsThis">
@@ -255,14 +244,9 @@ border:2px solid rgb(22,155,213);
      <string notr="true">QLineEdit
 {
 border-style:none;
-padding:2px;
-border-radius:5px;
-border:2px solid #DCE4EC;
-}
-
-QLineEdit:focus
-{
-border:2px solid rgb(22,155,213);
+padding:3px;
+border-radius:7px;
+background:#dde3f0;
 }</string>
     </property>
     <property name="placeholderText">
@@ -291,7 +275,7 @@ border-style:none;
 padding:2px;
 border-radius:5px;
 border:1px solid rgb(119,119,119);
-background:white;
+background:rgb(220,227,242);
 }
 
 QPushButton:hover
@@ -306,15 +290,15 @@ background:rgb(220, 220, 220);
 
 QPushButton:checked
 {
-background:rgb(22,155,213);
-border:1px solid rgb(22,155,213);
+background:rgb(131,144,179);
+border:1px solid rgb(131,144,179);
 }</string>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="res.qrc">
+     <iconset resource="../../resource/res.qrc">
       <normaloff>:/images/images/icon/CaseSensitive.ico</normaloff>:/images/images/icon/CaseSensitive.ico</iconset>
     </property>
     <property name="checkable">
@@ -340,13 +324,13 @@ border:1px solid rgb(22,155,213);
      </sizepolicy>
     </property>
     <property name="toolTip">
-     <string>上一个</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;查找上一个&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="res.qrc">
+     <iconset resource="../../resource/res.qrc">
       <normaloff>:/images/images/icon/left.ico</normaloff>:/images/images/icon/left.ico</iconset>
     </property>
    </widget>
@@ -366,13 +350,13 @@ border:1px solid rgb(22,155,213);
      </sizepolicy>
     </property>
     <property name="toolTip">
-     <string>下一个</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;查找下一个&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="res.qrc">
+     <iconset resource="../../resource/res.qrc">
       <normaloff>:/images/images/icon/right.ico</normaloff>:/images/images/icon/right.ico</iconset>
     </property>
    </widget>
@@ -401,14 +385,14 @@ border:1px solid rgb(22,155,213);
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="res.qrc">
+     <iconset resource="../../resource/res.qrc">
       <normaloff>:/images/images/icon/close.ico</normaloff>:/images/images/icon/close.ico</iconset>
     </property>
    </widget>
   </widget>
  </widget>
  <resources>
-  <include location="res.qrc"/>
+  <include location="../../resource/res.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -8,9 +8,11 @@
 #include "helpdialog.h"
 #include "imagesizedialog.h"
 #include "insertdatedialog.h"
+#include "tomatobelldialog.h"
+#include "translatedialog.h"
+
 #include "searchframe.h"
 #include "tomatobellframe.h"
-#include "tomatobelldialog.h"
 
 #include "my_texteditor.h"
 #include "my_statusbar.h"
@@ -93,11 +95,10 @@ private slots:
     void spinFontSize_valueChanged(int);                    // 改变字体大小
     void comboFont_currentIndexChanged(const QString &);    // 选中文字改变(更新cut,copy,paste状态)
 
-    void TextSearch(QString,bool,bool);                     // 搜索文本
-    void TextDisplace(QString,QString, bool);               // 替换文本
-
     void on_recentlyOpenedMenu_triggered(QAction *);        // 打开最近访问文件
     void on_backgroundMenu_triggered(QAction *);            // 更换背景
+
+    void on_actTranslation_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -105,10 +106,12 @@ private:
     /* 自定义窗口 */
     InsertDateDialog *m_InsertDateDialog = nullptr;
     TomatobellDialog *m_TomatobellDialog = nullptr;
+    TranslateDialog  *m_TranslateDialog  = nullptr;
     ImageSizeDialog  *m_ImageSizeDialog  = nullptr;
     AboutDialog      *m_AboutDialog      = nullptr;
     HelpDialog       *m_HelpDialog       = nullptr;
     GitDialog        *m_GitDialog        = nullptr;
+
     TomatobellFrame  *m_TomatobellFrame  = nullptr;
     SearchFrame      *m_SearchFrame      = nullptr;
     my_StatusBar     *m_StatusBar        = nullptr;
@@ -126,9 +129,6 @@ private:
     /* 更新窗口位置 */
     inline void SearchFrameUpdate();
     inline void TomatobellFrameUpdate();
-    inline void StatusBarUpdate();
-
-    inline void connectToFileWatcher(my_File *file);
 
     /* 初始化 */
     void initUI();
@@ -145,6 +145,69 @@ private:
     /* 事件重写 */
     void closeEvent(QCloseEvent *event)   Q_DECL_OVERRIDE ;
     void resizeEvent(QResizeEvent* event) Q_DECL_OVERRIDE ;
+
+    const QString scrollbarStyleSheet =
+            "QScrollArea {\n"
+            "    border: none;\n"
+            "    background: transparent;\n"
+            "}\n"
+            "\n"
+            "QScrollArea > QWidget > QWidget {\n"
+            "    background: transparent;\n"
+            "}\n"
+            "\n"
+            "QScrollBar:vertical {\n"
+            "    border:none;\n"
+            "    background: transparent;\n"
+            "    width: 10px;\n"
+            "}\n"
+            "\n"
+            "QScrollBar::handle:vertical {\n"
+            "    border-radius:5px;\n"
+            "    background: #DDDDDD;\n"
+            "    min-height: 60px;\n"
+            "}\n"
+            "QScrollBar::add-line:vertical {\n"
+            "    border: none;\n"
+            "    height: 0px;\n"
+            "}\n"
+            "\n"
+            "QScrollBar::sub-line:vertical {\n"
+            "    border: none;\n"
+            "    height: 0px;\n"
+            "}\n"
+            "\n"
+            "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+            "    background: transparent;\n"
+            "}\n"
+            "\n"
+            "QScrollBar:horizontal {\n"
+            "    border:none;\n"
+            "    background: transparent;\n"
+            "    height:10px"
+                                    ";\n"
+            "}\n"
+            "\n"
+            "QScrollBar::handle:horizontal {\n"
+            "    border-radius:5px;\n"
+            "    background: #DDDDDD;\n"
+            "    min-width: 60px;\n"
+            "}\n"
+            "\n"
+            "QScrollBar::add-line:horizontal {\n"
+            "    border: none;\n"
+            "    width: 0px;\n"
+            "}\n"
+            "\n"
+            "QScrollBar::sub-line:horizontal {\n"
+            "    border: none;\n"
+            "    width: 0px;\n"
+            "}\n"
+            "\n"
+            "QScrollBar::add-page:horizontal,\n"
+            "QScrollBar::sub-page:horizontal {\n"
+            "    background:  transparent;\n"
+            "}";
 };
 
 #endif // MAINWINDOW_H

@@ -6,138 +6,54 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>312</width>
-    <height>213</height>
+    <width>180</width>
+    <height>157</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>插入日期</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
+   <string notr="true">QListWidget
+{
+background:rgb(233,237,245);
+}
 
 QListWidget::item:selected
 {
-background:rgb(22,155,213);
+background:rgb(131,144,179);
 color:white;
 }
 </string>
   </property>
-  <widget class="QPushButton" name="OK_Btn">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>170</y>
-     <width>80</width>
-     <height>31</height>
-    </rect>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
    </property>
-   <property name="font">
-    <font>
-     <family>微软雅黑</family>
-     <pointsize>9</pointsize>
-    </font>
+   <property name="leftMargin">
+    <number>0</number>
    </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton
-{
-border-style:none;
-padding:10px;
-border-radius:6px;
-color:#E6F8F5;
-background:rgb(22,155,213);
-}
-
-QPushButton:hover
-{
-color:#FFFFFF;
-background:rgb(70, 197, 255);
-}
-
-QPushButton:pressed
-{
-color:#A7EEE6;
-background:rgb(19, 139, 190);
-}</string>
+   <property name="topMargin">
+    <number>0</number>
    </property>
-   <property name="text">
-    <string>确定</string>
+   <property name="rightMargin">
+    <number>0</number>
    </property>
-  </widget>
-  <widget class="QPushButton" name="Cancel_Btn">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>170</y>
-     <width>80</width>
-     <height>31</height>
-    </rect>
+   <property name="bottomMargin">
+    <number>0</number>
    </property>
-   <property name="font">
-    <font>
-     <family>微软雅黑</family>
-     <pointsize>9</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton
-{
-border-style:none;
-padding:2px;
-border-radius:5px;
-border:1px solid rgb(119,119,119);
-color:black;
-background:white;
-}
-
-QPushButton:hover
-{
-background:rgb(250, 250, 250);
-}
-
-QPushButton:pressed
-{
-background:rgb(220, 220, 220);
-}</string>
-   </property>
-   <property name="text">
-    <string>取消</string>
-   </property>
-  </widget>
-  <widget class="QListWidget" name="DateFormatList">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>311</width>
-     <height>161</height>
-    </rect>
-   </property>
-   <property name="whatsThis">
-    <string>日期格式列表</string>
-   </property>
-   <property name="currentRow">
-    <number>-1</number>
-   </property>
-  </widget>
+   <item>
+    <widget class="QListWidget" name="DateFormatList">
+     <property name="whatsThis">
+      <string>日期格式列表</string>
+     </property>
+     <property name="currentRow">
+      <number>-1</number>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>Cancel_Btn</sender>
-   <signal>clicked()</signal>
-   <receiver>InsertDateDialog</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>219</x>
-     <y>345</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>155</x>
-     <y>185</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
